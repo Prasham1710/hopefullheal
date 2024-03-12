@@ -20,7 +20,7 @@ async function searchProducts(formData: FormData) {
   const searchQuery = formData.get("searchQuery")?.toString();
 
   if (searchQuery) {
-    redirect("components/search?query=" + searchQuery);
+    redirect("/search?query=" + searchQuery);
   }
 }
 export default async function Navbar() {
@@ -36,7 +36,7 @@ export default async function Navbar() {
           <Link className=" text-lg" href="/doctor">
             Home
           </Link>
-          <Link className=" text-lg " href="/">
+          <Link className=" text-lg " href="/appointment">
             Consunlt doctor
           </Link>
           <div className="pl-32 flex gap-2">

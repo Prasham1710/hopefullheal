@@ -30,7 +30,7 @@ export default async function Navbar() {
           <li>
             <Link
               className=" hover:underline outline-none  text-white"
-              href={"/"}
+              href={"/appointment"}
             >
               Home
             </Link>
@@ -38,7 +38,7 @@ export default async function Navbar() {
           <li>
             <Link
               className=" hover:underline outline-none  text-white"
-              href={"/doctors"}
+              href={"appointment/doctors"}
             >
               Doctors
             </Link>
@@ -47,7 +47,7 @@ export default async function Navbar() {
           <li>
             <Link
               className=" hover:underline outline-none  text-white"
-              href={"/appointments"}
+              href={"appointment/appointments"}
             >
               Appointments
             </Link>
@@ -56,7 +56,7 @@ export default async function Navbar() {
           <li>
             <Link
               className=" hover:underline outline-none  text-white"
-              href={"/applyfordoctor"}
+              href={"appointment/applyfordoctor"}
             >
               Apply for doctor
             </Link>
@@ -65,11 +65,17 @@ export default async function Navbar() {
           <li>
             <Link
               className=" hover:underline outline-none  text-white"
-              href={"/profile"}
+              href={"appointment/profile"}
             >
               Profile
             </Link>
           </li>
+          <Link
+            className="hover:underline outline-none  text-white"
+            href="/doctor"
+          >
+            Medecine
+          </Link>
         </ul>
       </nav>
       <UserMenuButton session={session} />
