@@ -1,3 +1,39 @@
+Drive Link ->   https://drive.google.com/drive/folders/103xrPVhy7rBAAyCD8ZYhCjo6zzLAaDgJ?usp=drive_link
+# Cancer Hub
+
+Welcome to Cancer Hub – your comprehensive one-stop destination for all things related to cancer. Our platform is designed to provide a holistic approach to cancer care, offering a range of services to support individuals on their journey.
+
+## E-commerce Portal for Cancer Medicines
+
+Explore our specialized e-commerce portal, dedicated to offering a curated selection of cancer medicines. Rest assured, our platform serves as a trustworthy source for your medical needs.
+
+## Verified Research Database
+
+Immerse yourself in a meticulously verified database, empowering users with a wealth of research content covering every aspect of cancer. Stay informed about the latest advancements in cancer research through reliable and up-to-date information.
+
+## Fine-tuned Chatbot
+
+Our dynamic chatbot is fine-tuned to the nuances of cancer data. Have a question? The chatbot is here to assist, offering personalized support, clearing doubts, and guiding your exploration through the intricacies of cancer research.
+
+## Doctor Appointment Booking
+
+Connect with renowned doctors specializing in cancer care through our unique appointment booking system. Ensure timely access to expert advice and personalized healthcare solutions.
+
+## Get Involved
+
+Join us in the fight against cancer, where knowledge, accessibility, and compassion converge to make a meaningful impact on lives.
+
+ ## *Educate support advocate.*
+
+
+## Tech Stack used:
+1. NextJs
+2. ReactJs
+3. TailwindCss
+4. Next-Auth
+5. Typescript
+6. Prisma
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
