@@ -61,7 +61,7 @@ const Navbar = () => {
   </DropdownMenuContent>
 </DropdownMenu>
 <button className=' text-white hover:underline pl-10'> Locate Hospitals</button> 
-<button className=' text-white hover:underline pl-10'> Medicines</button> 
+<Link href="/doctor" className=' text-white hover:underline pl-10'> Medicines</Link> 
 <button className=' text-white hover:underline pl-10'> About Us</button> 
 <button className=' bg-[#6e818d] text-[#dfeaf2] p-2 rounded-lg ml-10'> Donate Now</button> 
 </div>
