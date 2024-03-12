@@ -74,7 +74,7 @@ export default async function Navbar() {
             className="hover:underline outline-none  text-white"
             href="/doctor"
           >
-            Medecine
+            Medicine
           </Link>
         </ul>
       </nav>

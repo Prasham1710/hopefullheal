@@ -37,37 +37,37 @@ export default async function AddProductPage() {
   }
 
   return (
-    <div>
-      <h1 className="mb-3 text-lg font-bold">Add Product</h1>
+    <div className="w-screen  h-screen  ">
+      <h1 className=" text-lg font-bold">Add Product</h1>
 
       <form action={addProduct}>
         <input
           required
           name="name"
           placeholder="Name"
-          className="input-bordered input mb-3 w-full"
+          className="input-bordered input m-3 w-[500px] border-black border-2 rounded-lg p-4"
         />
         <textarea
           required
           name="description"
           placeholder="Description"
-          className="textarea-bordered textarea mb-3 w-full"
+          className="textarea-bordered textarea m-3 w-full border-black"
         />
         <input
           required
           name="imageUrl"
           placeholder="Image URL"
           type="url"
-          className="input-bordered input mb-3 w-full"
+          className="input-bordered input m-3 w-full border-black"
         />
         <input
           required
           name="price"
           placeholder="Price"
           type="number"
-          className="input-bordered input mb-3 w-full"
+          className="input-bordered input m-3 w-full border-black"
         />
-        <FormSubmitButton className=" btn-block">Add Product </FormSubmitButton>
+        <FormSubmitButton className=" btn-block bg-zinc-300 p-3 rounded-full ">Add Product </FormSubmitButton>
       </form>
     </div>
   );

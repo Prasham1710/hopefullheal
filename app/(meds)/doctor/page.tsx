@@ -28,7 +28,7 @@ export default async function Home({
 
   return (
     <div className="flex flex-col items-center">
-      <div className="my-4 grid grid-cols-1 bg-purple-100 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
+      <div className="my-4 grid grid-cols-1  gap-6 rounded-2xl shadow-amber-50 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
         {(currentPage === 1 ? products.slice(1) : products).map((product) => (
           <ProductCard product={product} key={product.id} />
         ))}

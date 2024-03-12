@@ -27,22 +27,26 @@ export default async function Navbar() {
   const session = await getServerSession(authOptions);
   const cart = await getCart();
   return (
-    <div className="bg-blue-400 flex w-full">
-      <div className="flex gap-10">
+    <div className="bg-[#00416a] flex w-full">
+      <div className="flex gap-10 text-white">
         <div className="text-xl  pl-14 my-4">
           <Link href="/">Codecure</Link>
         </div>
         <div className="flex ml-96 gap-20 pt-4">
-          <Link className=" text-lg" href="/doctor">
+          <Link className=" text-lg hover:underline" href="/doctor">
             Home
           </Link>
-          <Link className=" text-lg " href="/appointment">
+          <Link className=" text-lg hover:underline" href="/appointment">
             Consunlt doctor
           </Link>
           <div className="pl-32 flex gap-2">
             <form action={searchProducts}>
               <div className="">
-                <input name="searchQuery" placeholder="Search" className="" />
+                <input
+                  name="searchQuery"
+                  placeholder="Search"
+                  className="rounded-xl p-2"
+                />
               </div>
             </form>
             <UserMenuButton session={session} />
@@ -55,20 +59,24 @@ export default async function Navbar() {
               </PopoverTrigger>
               <PopoverContent>
                 <div className="">
-          <span className="text-lg font-bold">{cart?.size || 0} Items</span>
-          <span className="text-info">
-            Subtotal: {formatPrice(cart?.subtotal || 0)}
-          </span>
-          <div className="">
-            <Link href="doctor/cart" className="btn-primary btn-block btn">
-              View cart
-            </Link>
-          </div>
-          </div>
+                  <span className="text-lg font-bold">
+                    {cart?.size || 0} Items
+                  </span>
+                  <span className="text-info">
+                    Subtotal: {formatPrice(cart?.subtotal || 0)}
+                  </span>
+                  <div className="">
+                    <Link
+                      href="doctor/cart"
+                      className="btn-primary btn-block btn"
+                    >
+                      View cart
+                    </Link>
+                  </div>
+                </div>
               </PopoverContent>
             </Popover>
 
-           
             <div className="flex pl-2">
               <button className="">Rx</button>
             </div>

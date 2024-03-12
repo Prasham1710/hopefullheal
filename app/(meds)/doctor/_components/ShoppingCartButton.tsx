@@ -13,20 +13,22 @@ export default function ShoppingCartButton({ cart }: ShoppingCartButtonProps) {[
       <label tabIndex={0} className="">
         <div className="">
           <BsCartPlus size={25} />
-          <span className="">
-            {cart?.size || 0}
-          </span>
+          <span className="">{cart?.size || 0}</span>
         </div>
       </label>
-      <div
-        tabIndex={0}
-        className=" "
-      >
+      <div tabIndex={0} className=" ">
         <div className="">
-          <span className="text-lg font-bold">{cart?.size || 0} Items</span>
-          <span className="text-info">
-            Subtotal: {formatPrice(cart?.subtotal || 0)}
-          </span>
+          <div className="flex flex-col">
+            <div>
+              <span className="text-lg font-bold">{cart?.size || 0} Items</span>
+            </div>
+            <div>
+              <span className="text-info">
+                Subtotal: {formatPrice(cart?.subtotal || 0)}
+              </span>
+            </div>
+          </div>
+
           <div className="">
             <Link href="doctor/cart" className="btn-primary btn-block btn">
               View cart
