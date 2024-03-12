@@ -11,21 +11,21 @@ const Understanding = () => {
             <div className="flex flex-col  p-3  shadow w-60 bg-blue-900 ">
                 <div className="space-y-3  ">
                     <div className="flex items-center">
-                        <h2 className="text-lg font-bold text-blue-100 mt-14 transition-transform transform hover:scale-110 hover:shadow-xl "><Link href='/components/AboutCancer/Understanding'>Understanding Cancer</Link> </h2>
+                        <h2 className="text-lg font-bold text-blue-100 mt-14 transition-transform transform hover:scale-110 hover:shadow-xl "><Link href='/AboutCancer/Understanding'>Understanding Cancer</Link> </h2>
                     </div>
                     <div className="flex-1">
                         <ul className="pt-2 pb-4 space-y-1 text-sm">
                             <li className="rounded-sm flex items-center p-2 space-x-3 rounded-md">
                                 
-                                    <span className='font-bold text-blue-100 hover:underline transition-transform transform hover:scale-110 hover:shadow-lg'><Link href='/components/AboutCancer/Understanding/What'>What is Cancer?</Link> </span>
+                                    <span className='font-bold text-blue-100 hover:underline transition-transform transform hover:scale-110 hover:shadow-lg'><Link href='/AboutCancer/Understanding/What'>What is Cancer?</Link> </span>
                                 
                             </li>
                             <li className="rounded-sm flex items-center p-2 space-x-3 rounded-md">
-                                    <span className='font-bold text-blue-100 hover:underline transition-transform transform hover:scale-110 hover:shadow-lg'><Link href='/components/AboutCancer/Understanding/Statistics'>Cancer Statistics</Link></span>
+                                    <span className='font-bold text-blue-100 hover:underline transition-transform transform hover:scale-110 hover:shadow-lg'><Link href='/AboutCancer/Understanding/Statistics'>Cancer Statistics</Link></span>
                                 
                             </li>
                             <li className="rounded-sm flex items-center p-2 space-x-3 rounded-md">
-                                    <span className='font-bold text-blue-100 hover:underline transition-transform transform hover:scale-110 hover:shadow-lg'><Link href='/components/AboutCancer/Understanding/Disparities'>Cancer Disparities</Link></span>
+                                    <span className='font-bold text-blue-100 hover:underline transition-transform transform hover:scale-110 hover:shadow-lg'><Link href='/AboutCancer/Understanding/Disparities'>Cancer Disparities</Link></span>
                             </li>
                         </ul>
                     </div>
