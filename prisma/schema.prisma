@@ -31,6 +31,8 @@ model Cart {
   @@map("carts")
 }
 
+
+
 model CartItem {
   id        String  @id @default(auto()) @map("_id") @db.ObjectId
   productId String  @db.ObjectId
@@ -94,3 +96,33 @@ model VerificationToken {
   @@unique([identifier, token])
   @@map("verificationtokens")
 }
+
+//saket data
+model Appointment{
+  id         String     @id @default(auto()) @map("_id") @db.ObjectId
+  doctor       String
+  patient      String
+  timeofAppointment     String @default("")
+  dateofAppointment     String @default("")
+  BookingDateandTime   DateTime   @default(now())
+
+}
+
+
+model Doctor {
+  id          String     @id @default(auto()) @map("_id") @db.ObjectId
+  imageUrl    String
+  name        String
+  specialization    String @default("")
+  experience    String @default("")
+  feesPerConsultation    Int @default(0)
+  phoneNum    String @default("")
+  appointmentStatus     Boolean   @default(false)
+  timeofAppointment     String @default("")
+  dateofAppointment     String @default("")
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  @@map("doctors")
+}
+
