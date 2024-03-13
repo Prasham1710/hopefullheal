@@ -17,7 +17,7 @@ const page = () => {
         <Link
           key={letter}
           className="font-semibold px-2 py-2 mx-2 text-white hover:underline hover:text-blue-600 border-2 rounded-full"
-          href={`/components/CancerTypes/#${letter}`}
+          href={`/CancerTypes/#${letter}`}
         >
           {letter.toUpperCase()}
         </Link>
