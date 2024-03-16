@@ -2,7 +2,7 @@
 Drive Link ->   https://drive.google.com/drive/folders/103xrPVhy7rBAAyCD8ZYhCjo6zzLAaDgJ?usp=drive_link
 # Hopefull Heal
 
-Welcome to Cancer Hub – your comprehensive one-stop destination for all things related to cancer. Our platform is designed to provide a holistic approach to cancer care, offering a range of services to support individuals on their journey.
+Welcome to Hopefull Heal – your comprehensive one-stop destination for all things related to cancer. Our platform is designed to provide a holistic approach to cancer care, offering a range of services to support individuals on their journey.
 
 ## E-commerce Portal for Cancer Medicines
 
@@ -11,10 +11,6 @@ Explore our specialized e-commerce portal, dedicated to offering a curated selec
 ## Verified Research Database
 
 Immerse yourself in a meticulously verified database, empowering users with a wealth of research content covering every aspect of cancer. Stay informed about the latest advancements in cancer research through reliable and up-to-date information.
-
-## Fine-tuned Chatbot
-
-Our dynamic chatbot is fine-tuned to the nuances of cancer data. Have a question? The chatbot is here to assist, offering personalized support, clearing doubts, and guiding your exploration through the intricacies of cancer research.
 
 ## Doctor Appointment Booking
 
