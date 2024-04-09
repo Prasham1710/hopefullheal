@@ -38,15 +38,16 @@ export default function UserMenuButton({ session }: UserMenuButtonProps) {
           <li>
             {user ? (
               <PopoverContent className="w-90">
-                <button 
-                className=""
-                onClick={() => signOut({ callbackUrl: "/"  })}>
+                <button
+                  className=""
+                  onClick={() => signOut({ callbackUrl: "/" })}
+                >
                   Sign Out
                 </button>
               </PopoverContent>
             ) : (
               <button
-                className="bg-blue-600 text-white inline-block  font-bold py-2 px-8 rounded focus:outline-none focus:shadow-outline"
+                className="bg-blue-400 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                 onClick={() => signIn()}
               >
                 Sign In

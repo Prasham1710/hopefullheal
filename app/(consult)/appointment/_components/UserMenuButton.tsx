@@ -17,7 +17,7 @@ export default function UserMenuButton({ session }: UserMenuButtonProps) {
   const user = session?.user;
 
   return (
-    <div className=" ">
+    <div className="p-1">
       <Popover>
         {user ? (
           <PopoverTrigger>
@@ -26,7 +26,7 @@ export default function UserMenuButton({ session }: UserMenuButtonProps) {
               alt="Profile picture"
               width={40}
               height={40}
-              className="w-10 rounded-full"
+              className="w-10 h-10 rounded-full"
             />
           </PopoverTrigger>
         ) : (
@@ -38,7 +38,7 @@ export default function UserMenuButton({ session }: UserMenuButtonProps) {
             {user ? (
               <PopoverContent className="w-90">
                 <button
-                  className=""
+                  className="text-sm bg-white text-gray-800 px-3 py-1 rounded-lg border border-gray-300"
                   onClick={() => signOut({ callbackUrl: "/" })}
                 >
                   Sign Out
@@ -46,7 +46,7 @@ export default function UserMenuButton({ session }: UserMenuButtonProps) {
               </PopoverContent>
             ) : (
               <button
-                className="bg-blue-600 text-white inline-block  font-bold py-2 px-8 rounded focus:outline-none focus:shadow-outline"
+                className="text-sm bg-blue-600 text-white px-4 py-1 rounded-lg focus:outline-none focus:shadow-outline"
                 onClick={() => signIn()}
               >
                 Sign In
