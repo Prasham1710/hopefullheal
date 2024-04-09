@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-
 import Link from "next/link";
-
 import { getServerSession } from "next-auth";
 
 interface User {
@@ -15,67 +13,50 @@ export default async function Navbar() {
   const session = await getServerSession(authOptions);
 
   return (
-    <header className="w-full flex justify-between gap-8 items-center sticky top-0 left-0 bg-light-blue z-2 shadow-md transition-all duration-200 bg-[#00416a]">
-      <nav
-        className={
-          "nav-active w-full flex justify-between px-8 py-4 items-center"
-        }
-      >
-        <h2 className="font-bold text-[#b1c0ca] text-lg  py-3 pl-10 pr-[398px]">
-          <Link className="font-bold text-[24px]" href={"/"}>
+    <header className="w-full flex justify-between items-center sticky top-0 left-0 bg-light-blue z-10 shadow-md transition-all duration-200 bg-[#00416a]">
+      <nav className="w-full flex justify-between px-8 py-2 items-center">
+        <h2 className="font-bold text-lg py-3">
+          <Link className="font-bold text-2xl" href={"/"}>
             Hopeful Heals
           </Link>
         </h2>
-        <ul className="nav-links flex gap-8">
+        <ul className="flex gap-6 text-white">
           <li>
-            <Link
-              className=" hover:underline outline-none  text-white"
-              href={"/appointment"}
-            >
+            <Link className="hover:underline" href={"/appointment"}>
               Home
             </Link>
           </li>
           <li>
-            <Link
-              className=" hover:underline outline-none  text-white"
-              href={"appointment/doctors"}
-            >
+            <Link className="hover:underline" href={"/appointment/doctors"}>
               Doctors
             </Link>
           </li>
-
           <li>
             <Link
-              className=" hover:underline outline-none  text-white"
-              href={"appointment/appointments"}
+              className="hover:underline"
+              href={"/appointment/appointments"}
             >
               Appointments
             </Link>
           </li>
-
           <li>
             <Link
-              className=" hover:underline outline-none  text-white"
-              href={"appointment/applyfordoctor"}
+              className="hover:underline"
+              href={"/appointment/applyfordoctor"}
             >
               Apply for doctor
             </Link>
           </li>
-
           <li>
-            <Link
-              className=" hover:underline outline-none  text-white"
-              href={"appointment/profile"}
-            >
+            <Link className="hover:underline" href={"/appointment/profile"}>
               Profile
             </Link>
           </li>
-          <Link
-            className="hover:underline outline-none  text-white"
-            href="/doctor"
-          >
-            Medicine
-          </Link>
+          <li>
+            <Link className="hover:underline" href="/doctor">
+              Medicine
+            </Link>
+          </li>
         </ul>
       </nav>
       <UserMenuButton session={session} />

@@ -25,27 +25,30 @@ export default function CartEntry({
     );
   }
   return (
-    <div>
-      <div className="flex flex-wrap">
-        <Image
-          src={product.imageUrl}
-          alt={product.name}
-          width={200}
-          height={200}
-          className="rounded-lg"
-        />
-        <div className="p-3">
+    <div className="border-b border-gray-200 py-4">
+      <div className="flex flex-wrap items-center gap-4">
+        <div className="w-24 h-24 relative">
+          <Image
+            src={product.imageUrl}
+            alt={product.name}
+            layout="fill"
+            objectFit="cover"
+            className="rounded-lg"
+          />
+        </div>
+        <div className="flex-1">
           <Link
-            href={"components/products/" + product.id}
-            className="font-bold"
+            href={`/doctor/products/${product.id}`}
+            passHref
+            className="font-bold text-lg leading-tight"
           >
             {product.name}
           </Link>
-          <div>Price: {formatPrice(product.price)}</div>
-          <div className="my-1 flex items-center gap-2">
-            Quantity:
+          <div className="text-gray-600">{formatPrice(product.price)}</div>
+          <div className="mt-2 flex items-center gap-2">
+            <label className="text-sm font-medium">Quantity:</label>
             <select
-              className="select-bordered select w-full max-w-[80px]"
+              className="border border-gray-300 rounded-md px-2 py-1"
               defaultValue={quantity}
               onChange={(e) => {
                 const newQuantity = parseInt(e.currentTarget.value);
@@ -58,15 +61,17 @@ export default function CartEntry({
               {quantityOptions}
             </select>
           </div>
-          <div className="flex items-center gap-3">
-            Total: {formatPrice(product.price * quantity)}
+          <div className="mt-2 flex items-center gap-2">
+            <label className="text-sm font-medium">Total:</label>
+            <div className="font-semibold">
+              {formatPrice(product.price * quantity)}
+            </div>
             {isPending && (
-              <span className="loading loading-spinner loading-sm" />
+              <span className="animate-spin w-4 h-4 border-t-2 border-b-2 border-blue-500 rounded-full" />
             )}
           </div>
         </div>
       </div>
-      <div className="divider" />
     </div>
   );
 }

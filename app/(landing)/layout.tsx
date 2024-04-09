@@ -18,8 +18,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Navbar />
-        <div className="mb-0">
+        <Navbar  />
+        <div className="mb-0 w-screen">
           {children}
           <div className="fixed bottom-20 right-20 flex justify-center items-center rounded-full bg-white shadow-md z-50 cursor-pointer w-16 h-16">
             <SiChatbot size={40} />

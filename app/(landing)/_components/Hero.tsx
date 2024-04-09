@@ -2,7 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import bg from '/public/bg.png'
 import bg1 from '/public/bg1.png'
-
+import "@/app/globals.css";
 
 
 

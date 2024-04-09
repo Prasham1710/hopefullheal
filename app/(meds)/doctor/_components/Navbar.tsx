@@ -20,7 +20,7 @@ async function searchProducts(formData: FormData) {
   const searchQuery = formData.get("searchQuery")?.toString();
 
   if (searchQuery) {
-    redirect("/search?query=" + searchQuery);
+    redirect("/doctor/search?query=" + searchQuery);
   }
 }
 export default async function Navbar() {
@@ -49,7 +49,7 @@ export default async function Navbar() {
                 />
               </div>
             </form>
-            <UserMenuButton session={session} />
+
             <Popover>
               <PopoverTrigger>
                 <div className="">
@@ -67,7 +67,7 @@ export default async function Navbar() {
                   </span>
                   <div className="">
                     <Link
-                      href="doctor/cart"
+                      href="/doctor/cart"
                       className="btn-primary btn-block btn"
                     >
                       View cart
@@ -76,10 +76,8 @@ export default async function Navbar() {
                 </div>
               </PopoverContent>
             </Popover>
-
-            <div className="flex pl-2">
-              <button className="">Rx</button>
-            </div>
+            <UserMenuButton  session={session} />
+            
           </div>
         </div>
       </div>

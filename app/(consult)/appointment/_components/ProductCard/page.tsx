@@ -3,8 +3,8 @@ import { useSession } from "next-auth/react";
 import toast, { Toaster } from "react-hot-toast";
 import { useEffect, useState } from "react";
 import { CiClock1 } from "react-icons/ci";
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import Image from "next/image";
 import { CiImageOn } from "react-icons/ci";
 import {
@@ -55,7 +55,7 @@ interface Product {
 }
 
 const ProductCard = () => {
-  const {data:session} = useSession();
+  const { data: session } = useSession();
   const user = session?.user;
   const [date, setDate] = useState<Date>(new Date());
   const [time, setTime] = useState<string>("12:00");
@@ -102,8 +102,10 @@ const ProductCard = () => {
 
   return (
     <>
-      <div className="flex justify-center pt-12 mb-12 ">Doctors to book</div>
-      <div className="flex justify-evenly gap-12 flex-wrap w-[100%] pr-6 pl-6">
+      <div className="flex justify-center pt-12 mb-12">
+        <h1 className="text-2xl font-bold">Doctors to book</h1>
+      </div>
+      <div className="flex justify-evenly gap-12 flex-wrap w-full pr-6 pl-6">
         {products.map((product) => (
           <Card
             key={product.id}
@@ -115,29 +117,31 @@ const ProductCard = () => {
                 alt={product.id}
                 width={50}
                 height={50}
-                className="flex ml-16"
+                className="rounded-full"
               />
               <CardTitle>{product.name}</CardTitle>
             </CardHeader>
             <CardContent>
               <p>Specialization: {product.specialization}</p>
+              <p>Experience: {product.experience}</p>
+              <p>Fees per Consultation: ${product.feesPerConsultation}</p>
+              <p>Contact Number: {product.phoneNum}</p>
             </CardContent>
+            {/* Additional details section */}
             <CardContent>
-              <p>Specialization: {product.experience}</p>
-            </CardContent>
-            <CardContent>
-              <p>Fees per Consulating: ${product.feesPerConsultation}</p>
-            </CardContent>
-            <CardContent>
-              <p>Contact Num: {product.phoneNum}</p>
+              <p className="font-bold mt-4">Additional Details:</p>
+              
+              <p>Appointment Status: {product.appointmentStatus ? 'Booked' : 'Available'}</p>
             </CardContent>
             <CardFooter className="flex justify-center">
+              {/* Dialog for booking appointment */}
               <Dialog>
                 <DialogTrigger asChild>
                   <Button className="bg-blue-400" variant="outline">
                     Book appointment
                   </Button>
                 </DialogTrigger>
+                {/* Dialog content for appointment */}
                 <DialogContent className="sm:max-w-[425px]">
                   <DialogHeader>
                     <DialogTitle className="flex justify-center mb-4">
@@ -149,7 +153,8 @@ const ProductCard = () => {
                     </DialogDescription>
                   </DialogHeader>
                   <div className="grid gap-4 py-2 justify-center items-center">
-                    <div className="grid grid-cols-4 gap-4 ">
+                    {/* Date picker */}
+                    <div className="grid grid-cols-4 gap-4">
                       <Popover>
                         <PopoverTrigger asChild>
                           <Button
@@ -179,7 +184,7 @@ const ProductCard = () => {
                         </PopoverContent>
                       </Popover>
                     </div>
-
+                    {/* Time picker */}
                     <div className="grid grid-cols-4 items-center gap-4">
                       <Popover>
                         <PopoverTrigger asChild>
@@ -206,21 +211,14 @@ const ProductCard = () => {
                             value={time}
                             onChange={(e) => setTime(e.target.value)}
                           />
-
-
-
                         </PopoverContent>
-                       
                       </Popover>
                     </div>
-                    
-      
                   </div>
-                  
+                  {/* Dialog footer for saving changes */}
                   <DialogFooter>
                     <DialogClose asChild>
                       <Button
-                        type="submit"
                         onClick={() =>
                           bookAppointment(
                             product.name,
@@ -229,13 +227,12 @@ const ProductCard = () => {
                           )
                         }
                       >
-                        Save changes
+                        Save Changes
                       </Button>
                     </DialogClose>
                   </DialogFooter>
                 </DialogContent>
               </Dialog>
-              
             </CardFooter>
           </Card>
         ))}

@@ -7,6 +7,7 @@ import { authOptions } from "@/lib/utils/authOptions";
 export const metadata = {
   title: "Add Product - COdecure",
 };
+
 async function addProduct(formData: FormData) {
   "use server";
 
@@ -15,6 +16,7 @@ async function addProduct(formData: FormData) {
   if (!session) {
     redirect("/api/auth/signin?callbackUrl=/add-product");
   }
+
   const name = formData.get("name")?.toString();
   const description = formData.get("description")?.toString();
   const imageUrl = formData.get("imageUrl")?.toString();
@@ -23,51 +25,56 @@ async function addProduct(formData: FormData) {
   if (!name || !description || !imageUrl || !price) {
     throw Error("Missing required fields");
   }
-  for (let i = 0; i < 50; i++) {
+
+  
     await prisma.product.create({
       data: { name, description, imageUrl, price },
     });
-  }
+  
+
   redirect("/");
 }
+
 export default async function AddProductPage() {
   const session = await getServerSession(authOptions);
   if (!session) {
-    redirect("/api/auth/signin?callbackUrl=/components/add-product");
+    redirect("/api/auth/signin?callbackUrl=/doctor/add-product");
   }
 
   return (
-    <div className="w-screen  h-screen  ">
-      <h1 className=" text-lg font-bold">Add Product</h1>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+      <h1 className="text-lg font-bold mb-6">Add Product</h1>
 
-      <form action={addProduct}>
+      <form className="max-w-md w-full" action={addProduct}>
         <input
           required
           name="name"
           placeholder="Name"
-          className="input-bordered input m-3 w-[500px] border-black border-2 rounded-lg p-4"
+          className="input-bordered input mb-3 w-full"
         />
         <textarea
           required
           name="description"
           placeholder="Description"
-          className="textarea-bordered textarea m-3 w-full border-black"
+          className="textarea-bordered textarea mb-3 w-full"
         />
         <input
           required
           name="imageUrl"
           placeholder="Image URL"
           type="url"
-          className="input-bordered input m-3 w-full border-black"
+          className="input-bordered input mb-3 w-full"
         />
         <input
           required
           name="price"
           placeholder="Price"
           type="number"
-          className="input-bordered input m-3 w-full border-black"
+          className="input-bordered input mb-3 w-full"
         />
-        <FormSubmitButton className=" btn-block bg-zinc-300 p-3 rounded-full ">Add Product </FormSubmitButton>
+        <FormSubmitButton className="btn-block bg-blue-500 text-white py-3 rounded">
+          Add Product
+        </FormSubmitButton>
       </form>
     </div>
   );

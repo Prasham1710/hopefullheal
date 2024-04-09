@@ -12,11 +12,9 @@ import Link from 'next/link'
 
 const Navbar = () => {
   return (
-    <div className='bg-[#00416a] '>
-      <div className=''>
+    <div className='bg-[#00416a]  w-screen'>
       
-    </div>
-    <div className='w-full h-full '>
+    <div className=' h-full '>
     <div className=' flex justify-between  '>
         <p className='flex flex-col'>
           <span className='font-bold text-[#b1c0ca] text-lg ] py-8 pl-10 pr-[398px]'><Link href='/'> Hopeful Heals</Link></span>
