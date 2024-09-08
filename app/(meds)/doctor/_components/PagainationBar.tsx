@@ -18,8 +18,10 @@ export default function PaginationBar({
       <Link
         href={"?page=" + page}
         key={page}
-        className={`join-item btn ${
-          currentPage === page ? "btn-active pointer-events-none" : ""
+        className={`join-item px-4 py-2 rounded-md text-sm font-semibold ${
+          currentPage === page
+            ? "bg-blue-600 text-white pointer-events-none"
+            : "bg-gray-100 hover:bg-blue-500 hover:text-white transition duration-300"
         }`}
       >
         {page}
@@ -28,24 +30,49 @@ export default function PaginationBar({
   }
 
   return (
-    <>
-      <div className="join hidden sm:block">{numberedPageItems}</div>
-      <div className="join block sm:hidden">
+          <div className="flex justify-center my-6 space-x-2">
+      {/* Pagination for larger screens */}
+      <div className="hidden sm:flex space-x-2">
         {currentPage > 1 && (
-          <Link href={"?page=" + (currentPage - 1)} className="join-item btn">
+          <Link
+            href={"?page=" + (currentPage - 1)}
+            className="px-4 py-2 bg-gray-100 hover:bg-blue-500 hover:text-white transition duration-300 rounded-md"
+          >
             «
           </Link>
         )}
-        <button className="join-item btn pointer-events-none">
-          Page {currentPage}
-        </button>
+        {numberedPageItems}
         {currentPage < totalPages && (
-          <Link href={"?page=" + (currentPage + 1)} className="join-item btn">
+          <Link
+            href={"?page=" + (currentPage + 1)}
+            className="px-4 py-2 bg-gray-100 hover:bg-blue-500 hover:text-white transition duration-300 rounded-md"
+          >
             »
           </Link>
         )}
       </div>
-    </>
+      <div className="sm:hidden flex space-x-2">
+        {currentPage > 1 && (
+          <Link
+            href={"?page=" + (currentPage - 1)}
+            className="px-4 py-2 bg-gray-100 hover:bg-blue-500 hover:text-white transition duration-300 rounded-md"
+          >
+            «
+          </Link>
+        )}
+        <button className="px-4 py-2 bg-blue-600 text-white rounded-md pointer-events-none">
+          Page {currentPage}
+        </button>
+        {currentPage < totalPages && (
+          <Link
+            href={"?page=" + (currentPage + 1)}
+            className="px-4 py-2 bg-gray-100 hover:bg-blue-500 hover:text-white transition duration-300 rounded-md"
+          >
+            »
+          </Link>
+        )}
+      </div>
+    </div>
   );
 }
 
