@@ -13,12 +13,12 @@ const Navbar = () => {
   return (
     <div className="bg-gradient-to-r from-[#00416a] to-[#003255] w-screen py-4">
       <div className="max-w-7xl mx-auto flex justify-between items-center px-6">
-        {/* Logo Section */}
+       
         <p className="text-[#b1c0ca] text-2xl font-bold">
           <Link href="/">Hopeful Heals</Link>
         </p>
 
-        {/* Slogan */}
+        
         <p className="hidden md:block font-semibold text-lg text-[#b1c0ca]">
           Fighting One Step At a Time.
         </p>
@@ -112,12 +112,11 @@ const Navbar = () => {
             </DropdownMenuContent>
           </DropdownMenu>
 
-          {/* Additional Links */}
           <Link
             href="/appointment"
             className="text-white font-medium hover:underline"
           >
-            Locate Hospitals
+            Book Appointment
           </Link>
           <Link
             href="/doctor"

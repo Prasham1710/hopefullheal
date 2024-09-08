@@ -20,13 +20,12 @@ export default async function CartPage() {
         />
       ))}
       {!cart?.items.length && <p>Your Cart is empty</p>}
-
-      <div className="flex flex-col items-end sm:items-center">
-        <p className="font-bold mb-3 text-lg">
+      <div className="flex flex-col items-end mt-8 space-y-4 sm:items-center sm:space-y-0 sm:flex-row sm:justify-between">
+        <p className="text-2xl font-bold text-gray-800">
           Total: {formatPrice(cart?.subtotal || 0)}
         </p>
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded shadow-md transition-colors duration-300">
-          Checkout
+        <button className="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg shadow-md transition-all duration-300 ease-in-out">
+          Proceed to Checkout
         </button>
       </div>
     </div>
