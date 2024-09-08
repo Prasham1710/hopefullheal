@@ -3,23 +3,27 @@ import Image from "next/image";
 
 const AboutUs = () => {
   return (
-    <section className="bg-gradient-to-r from-blue-100 via-blue-200 via-white via-blue-50 to-blue-100">
-      <div className="container mx-auto py-12 px-4 sm:px-6 lg:px-8">
+    <section className="bg-gradient-to-r from-blue-50 to-blue-200 py-12">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-center font-bold text-4xl sm:text-5xl text-blue-900 mb-8">
           About Us
         </h2>
-        <div className="flex flex-col md:flex-row items-center justify-center">
-          <div className="max-w-lg mr-8 mb-8 md:mb-0">
+
+        <div className="flex flex-col lg:flex-row items-center justify-center space-y-8 lg:space-y-0 lg:space-x-12">
+          {/* Image Section */}
+          <div className="w-full lg:w-1/2">
             <Image
               src="/doctor.jpg"
               width={600}
               height={400}
-              alt="hero"
-              className="rounded-lg shadow-lg"
+              alt="Doctor Consultation"
+              className="rounded-lg shadow-md"
             />
           </div>
-          <div className="max-w-lg">
-            <p className="text-lg text-blue-800 py-4">
+
+          {/* Text Section */}
+          <div className="w-full lg:w-1/2 text-center lg:text-left">
+            <p className="text-lg text-blue-800 leading-relaxed mb-6">
               Welcome to CancerCare Consult, your trusted partner in cancer care
               and support. Our platform is dedicated to providing accessible,
               expert consultation and guidance for individuals and families
@@ -28,24 +32,29 @@ const AboutUs = () => {
               personalized care and support to help you navigate your cancer
               journey with confidence and resilience.
             </p>
-            <h2 className="font-bold text-2xl text-blue-900 pb-2">
+
+            {/* Mission Section */}
+            <h2 className="font-bold text-2xl text-blue-900 mb-4">
               Our Mission
             </h2>
-            <ul className="list-disc pl-8 text-blue-800">
-              <li>Provide Expert Consultation</li>
-              <li>Offer Compassionate Support</li>
-              <li>Empower Informed Decision-Making</li>
-              <li>Promote Holistic Well-Being</li>
+            <ul className="list-disc pl-8 text-blue-800 mb-6">
+              <li className="mb-2">Provide Expert Consultation</li>
+              <li className="mb-2">Offer Compassionate Support</li>
+              <li className="mb-2">Empower Informed Decision-Making</li>
+              <li className="mb-2">Promote Holistic Well-Being</li>
             </ul>
-            <h2 className="font-bold text-2xl text-blue-900 pt-4">
+
+            {/* Commitment Section */}
+            <h2 className="font-bold text-2xl text-blue-900 mb-4">
               Our Commitment
             </h2>
-            <p className="text-blue-800 pb-8">
+            <p className="text-lg text-blue-800 leading-relaxed mb-6">
               We are committed to providing compassionate, comprehensive, and
               cutting-edge care to individuals affected by cancer. We are
               dedicated to supporting you every step of the way on your cancer
               journey, from diagnosis to survivorship.
             </p>
+
             <p className="font-bold text-xl text-blue-900">
               Together, we can navigate through cancer with hope, resilience,
               and unwavering support. Welcome to CancerCare Consult, where your

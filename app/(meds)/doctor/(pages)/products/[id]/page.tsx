@@ -28,20 +28,28 @@ export default async function ProductPage({
         <Image
           src={product.imageUrl}
           alt={product.name}
-          width={500}
-          height={500}
-          className="rounded-lg"
+          width={300} // Adjust width accordingly
+          height={300} // Set a reduced height
+          className="rounded-lg object-cover"
           priority
         />
       </div>
-      <div className="lg:w-1/2 lg:pl-8">
-        <h1 className="text-5xl font-bold">{product.name}</h1>
-        <PriceTag price={product.price} className="mt-4" />
-        <p className="py-6">{product.description}</p>
-         <AddToCartButton
+
+      {/* Product Details Section */}
+      <div className="lg:w-2/3 flex flex-col justify-start">
+        <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+          {product.name}
+        </h1>
+        <PriceTag
+          price={product.price}
+          className="mt-2 text-2xl font-semibold text-green-600"
+        />
+        <p className="py-6 text-gray-700 leading-relaxed">
+          {product.description}
+        </p>
+        <AddToCartButton
           productId={product.id}
           incrementProductQuantity={incrementProductQuantity}
-          
         />
       </div>
     </div>

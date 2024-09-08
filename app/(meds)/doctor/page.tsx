@@ -27,13 +27,15 @@ export default async function Home({
   });
 
   return (
+    
     <div className="flex flex-col items-center">
-      <div className="my-4 grid grid-cols-1  gap-6 rounded-2xl shadow-amber-50 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
+      <div className="my-4 grid grid-cols-1 gap-6 rounded-2xl sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 w-full max-w-7xl">
         {(currentPage === 1 ? products.slice(1) : products).map((product) => (
           <ProductCard product={product} key={product.id} />
         ))}
       </div>
 
+      {/* Pagination Bar */}
       {totalPages > 1 && (
         <PaginationBar currentPage={currentPage} totalPages={totalPages} />
       )}

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -6,69 +6,137 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import Link from 'next/link'
-
+} from "@/components/ui/dropdown-menu";
+import Link from "next/link";
 
 const Navbar = () => {
   return (
-    <div className='bg-[#00416a]  w-screen'>
-      
-    <div className=' h-full '>
-    <div className=' flex justify-between  '>
-        <p className='flex flex-col'>
-          <span className='font-bold text-[#b1c0ca] text-lg ] py-8 pl-10 pr-[398px]'><Link href='/'> Hopeful Heals</Link></span>
+    <div className="bg-gradient-to-r from-[#00416a] to-[#003255] w-screen py-4">
+      <div className="max-w-7xl mx-auto flex justify-between items-center px-6">
+        {/* Logo Section */}
+        <p className="text-[#b1c0ca] text-2xl font-bold">
+          <Link href="/">Hopeful Heals</Link>
         </p>
-        <div className='pr-6'>
-          <p className='pt-2 font-bold text-2xl text-[#b1c0ca]'>Fighting One Step At a Time.</p>
-        <DropdownMenu >
-  <DropdownMenuTrigger className=' hover:underline outline-none  text-white'>About Cancer</DropdownMenuTrigger>
-  <DropdownMenuContent >
-    <DropdownMenuLabel>Explore About Cancer</DropdownMenuLabel>
-    <DropdownMenuSeparator />
-     <Link href="/AboutCancer/Understanding" >
-     <DropdownMenuItem className='hover:cursor-pointer'>
-  Understanding Cancer</DropdownMenuItem></Link>
-  <Link href="/AboutCancer/Diag" >
-    <DropdownMenuItem className='hover:cursor-pointer'>Diagnosis & Staging</DropdownMenuItem></Link>
-    <Link href="/AboutCancer/Advanced" >
-    <DropdownMenuItem className='hover:cursor-pointer'>Advanced Cancer</DropdownMenuItem></Link>
-    <Link href="/AboutCancer/Causes" >
-    <DropdownMenuItem className='hover:cursor-pointer'>Causes & Prevention</DropdownMenuItem>
-    </Link>
-    <Link href="/AboutCancer/Managing" ><DropdownMenuItem className='hover:cursor-pointer'>Managing Cancer Care</DropdownMenuItem></Link>
-    <Link href="/AboutCancer/Coping" >
-    <DropdownMenuItem className='hover:cursor-pointer'>Coping</DropdownMenuItem>
-    </Link>
-    </DropdownMenuContent>
-</DropdownMenu>
-        <DropdownMenu>
-  <DropdownMenuTrigger className='text-white hover:underline outline-none pl-10'>Cancer Types</DropdownMenuTrigger>
-  <DropdownMenuContent>
-    <DropdownMenuLabel>Common Cancer Types</DropdownMenuLabel>
-    <DropdownMenuSeparator />
-    <DropdownMenuItem className='hover:cursor-pointer'>Bladder Cancer</DropdownMenuItem>
-    <DropdownMenuItem className='hover:cursor-pointer'>Skin Cancer</DropdownMenuItem>
-    <DropdownMenuItem className='hover:cursor-pointer'>Pancreatic Cancer</DropdownMenuItem>
-    <DropdownMenuItem className='hover:cursor-pointer'>Kidney (Renal Cell) Cancer</DropdownMenuItem>
-    <DropdownMenuItem className='hover:cursor-pointer'>Breast Cancer</DropdownMenuItem>
-    <DropdownMenuItem className='hover:cursor-pointer'>Lymphoma</DropdownMenuItem>
-    <Link href="/CancerTypes/Lung" > <DropdownMenuItem className='hover:cursor-pointer'>Lung Cancer</DropdownMenuItem></Link>
-    <DropdownMenuItem className='hover:cursor-pointer'>Brain Tumor</DropdownMenuItem>
-    <Link href="/CancerTypes" ><DropdownMenuItem className='hover:cursor-pointer'>All Types</DropdownMenuItem></Link>
-  </DropdownMenuContent>
-</DropdownMenu>
-<Link href="/appointment" className=' text-white hover:underline pl-10'> Locate Hospitals</Link> 
-<Link href="/doctor" className=' text-white hover:underline pl-10'> Medicines</Link> 
-<button className=' text-white hover:underline pl-10'> About Us</button> 
-<button className=' bg-[#6e818d] text-[#dfeaf2] p-2 rounded-lg ml-10'> Donate Now</button> 
-</div>
 
+        {/* Slogan */}
+        <p className="hidden md:block font-semibold text-lg text-[#b1c0ca]">
+          Fighting One Step At a Time.
+        </p>
 
+        {/* Menu and Actions */}
+        <div className="flex items-center space-x-8">
+          {/* About Cancer Dropdown */}
+          <DropdownMenu>
+            <DropdownMenuTrigger className="text-white font-medium hover:underline">
+              About Cancer
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="bg-white shadow-md">
+              <DropdownMenuLabel className="text-gray-700">
+                Explore About Cancer
+              </DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <Link href="/AboutCancer/Understanding">
+                <DropdownMenuItem className="hover:bg-gray-100">
+                  Understanding Cancer
+                </DropdownMenuItem>
+              </Link>
+              <Link href="/AboutCancer/Diag">
+                <DropdownMenuItem className="hover:bg-gray-100">
+                  Diagnosis & Staging
+                </DropdownMenuItem>
+              </Link>
+              <Link href="/AboutCancer/Advanced">
+                <DropdownMenuItem className="hover:bg-gray-100">
+                  Advanced Cancer
+                </DropdownMenuItem>
+              </Link>
+              <Link href="/AboutCancer/Causes">
+                <DropdownMenuItem className="hover:bg-gray-100">
+                  Causes & Prevention
+                </DropdownMenuItem>
+              </Link>
+              <Link href="/AboutCancer/Managing">
+                <DropdownMenuItem className="hover:bg-gray-100">
+                  Managing Cancer Care
+                </DropdownMenuItem>
+              </Link>
+              <Link href="/AboutCancer/Coping">
+                <DropdownMenuItem className="hover:bg-gray-100">
+                  Coping
+                </DropdownMenuItem>
+              </Link>
+            </DropdownMenuContent>
+          </DropdownMenu>
+
+          {/* Cancer Types Dropdown */}
+          <DropdownMenu>
+            <DropdownMenuTrigger className="text-white font-medium hover:underline">
+              Cancer Types
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="bg-white shadow-md">
+              <DropdownMenuLabel className="text-gray-700">
+                Common Cancer Types
+              </DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem className="hover:bg-gray-100">
+                Bladder Cancer
+              </DropdownMenuItem>
+              <DropdownMenuItem className="hover:bg-gray-100">
+                Skin Cancer
+              </DropdownMenuItem>
+              <DropdownMenuItem className="hover:bg-gray-100">
+                Pancreatic Cancer
+              </DropdownMenuItem>
+              <DropdownMenuItem className="hover:bg-gray-100">
+                Kidney (Renal Cell) Cancer
+              </DropdownMenuItem>
+              <DropdownMenuItem className="hover:bg-gray-100">
+                Breast Cancer
+              </DropdownMenuItem>
+              <DropdownMenuItem className="hover:bg-gray-100">
+                Lymphoma
+              </DropdownMenuItem>
+              <Link href="/CancerTypes/Lung">
+                <DropdownMenuItem className="hover:bg-gray-100">
+                  Lung Cancer
+                </DropdownMenuItem>
+              </Link>
+              <DropdownMenuItem className="hover:bg-gray-100">
+                Brain Tumor
+              </DropdownMenuItem>
+              <Link href="/CancerTypes">
+                <DropdownMenuItem className="hover:bg-gray-100">
+                  All Types
+                </DropdownMenuItem>
+              </Link>
+            </DropdownMenuContent>
+          </DropdownMenu>
+
+          {/* Additional Links */}
+          <Link
+            href="/appointment"
+            className="text-white font-medium hover:underline"
+          >
+            Locate Hospitals
+          </Link>
+          <Link
+            href="/doctor"
+            className="text-white font-medium hover:underline"
+          >
+            Medicines
+          </Link>
+          <button className="text-white font-medium hover:underline">
+            About Us
+          </button>
+
+          {/* Donate Button */}
+          <button className="bg-[#ff6f61] hover:bg-[#ff4e45] text-white py-2 px-4 rounded-lg font-semibold">
+            Donate Now
+          </button>
         </div>
-        </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

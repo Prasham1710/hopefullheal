@@ -13,3 +13,15 @@ export async function datageter() {
     throw new Error("Failed to fetch all products");
   }
 }
+export async function deleteAppointment(id: string) {
+  try {
+    await prisma.appointment.delete({
+      where: { id },
+    });
+    revalidatePath("doctors");
+    return { success: true, message: "Appointment deleted successfully" };
+  } catch (error) {
+    console.error("Error deleting appointment:", error);
+    throw new Error("Failed to delete the appointment");
+  }
+}

@@ -26,11 +26,9 @@ async function addProduct(formData: FormData) {
     throw Error("Missing required fields");
   }
 
-  
-    await prisma.product.create({
-      data: { name, description, imageUrl, price },
-    });
-  
+  await prisma.product.create({
+    data: { name, description, imageUrl, price },
+  });
 
   redirect("/");
 }
@@ -42,40 +40,44 @@ export default async function AddProductPage() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <h1 className="text-lg font-bold mb-6">Add Product</h1>
-
-      <form className="max-w-md w-full" action={addProduct}>
-        <input
-          required
-          name="name"
-          placeholder="Name"
-          className="input-bordered input mb-3 w-full"
-        />
-        <textarea
-          required
-          name="description"
-          placeholder="Description"
-          className="textarea-bordered textarea mb-3 w-full"
-        />
-        <input
-          required
-          name="imageUrl"
-          placeholder="Image URL"
-          type="url"
-          className="input-bordered input mb-3 w-full"
-        />
-        <input
-          required
-          name="price"
-          placeholder="Price"
-          type="number"
-          className="input-bordered input mb-3 w-full"
-        />
-        <FormSubmitButton className="btn-block bg-blue-500 text-white py-3 rounded">
-          Add Product
-        </FormSubmitButton>
-      </form>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-gray-100 to-blue-200 p-4">
+      <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-lg">
+        <h1 className="text-2xl font-bold text-center mb-6 text-blue-600">
+          Add New Product
+        </h1>
+        <form className="space-y-4" action={addProduct}>
+          <input
+            required
+            name="name"
+            placeholder="Product Name"
+            className="input input-bordered w-full px-4 py-3 rounded-lg shadow-sm focus:ring focus:ring-blue-300"
+          />
+          <textarea
+            required
+            name="description"
+            placeholder="Product Description"
+            className="textarea textarea-bordered w-full px-4 py-3 rounded-lg shadow-sm focus:ring focus:ring-blue-300"
+            rows={4}
+          />
+          <input
+            required
+            name="imageUrl"
+            placeholder="Image URL"
+            type="url"
+            className="input input-bordered w-full px-4 py-3 rounded-lg shadow-sm focus:ring focus:ring-blue-300"
+          />
+          <input
+            required
+            name="price"
+            placeholder="Price"
+            type="number"
+            className="input input-bordered w-full px-4 py-3 rounded-lg shadow-sm focus:ring focus:ring-blue-300"
+          />
+          <FormSubmitButton className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg shadow-md transition duration-300">
+            Add Product
+          </FormSubmitButton>
+        </form>
+      </div>
     </div>
   );
 }

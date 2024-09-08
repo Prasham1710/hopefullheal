@@ -4,6 +4,7 @@ import "@/app/globals.css";
 import Navbar from "./_components/Navbar";
 import Footer from "./_components/Footer";
 import SessionProvider from "./_components/SessionProvider";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -18,10 +19,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body
+        className={`${inter.className} flex flex-col min-h-screen bg-gradient-to-br from-green-200 to-blue-300 relative`}
+      >
+        <div
+          className="absolute top-7
+         left-0 w-72 h-72 bg-green-300 rounded-full mix-blend-multiply filter blur-2xl opacity-30"
+        ></div>
+        <div className="absolute top-1/4 right-0 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+
         <SessionProvider>
           <Navbar />
-          <main className="m-auto min-w-[300px] max-w-7xl p-4">{children}</main>
+          <main className="ml-24 flex-grow  max-w-7xl p-4 ">{children}</main>
           <Footer />
         </SessionProvider>
       </body>
