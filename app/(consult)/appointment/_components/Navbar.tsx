@@ -10,7 +10,7 @@ export default async function Navbar() {
   return (
     <header className="w-full flex justify-between items-center sticky p-2 top-0 left-0 bg-[#00416a] z-10 shadow-md transition-all duration-200">
       <nav className="w-full flex justify-between px-6 py-3 items-center">
-        {/* Logo */}
+     
         <h2 className="font-bold text-xl text-white">
           <Link href={"/"}>Hopeful Heals</Link>
         </h2>
