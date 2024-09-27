@@ -41,14 +41,7 @@ export default async function Navbar() {
               Appointments
             </Link>
           </li>
-          <li>
-            <Link
-              className="hover:underline hover:text-gray-300"
-              href={"/appointment/applyfordoctor"}
-            >
-              Apply for Doctor
-            </Link>
-          </li>
+          
           <li>
             <Link
               className="hover:underline hover:text-gray-300"
