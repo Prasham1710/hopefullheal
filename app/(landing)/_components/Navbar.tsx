@@ -112,7 +112,7 @@ const Navbar = () => {
             About Us
           </Link>
           <Link
-            href="#donate"
+            href="/donate"
             className="bg-[#ff6f61] hover:bg-[#e85d50] text-white py-2 px-5 rounded-xl font-semibold transition-all duration-200 hover:shadow-lg hover:shadow-[#ff6f61]/30 hover:scale-105"
           >
             Donate Now
@@ -153,7 +153,7 @@ const Navbar = () => {
             </Link>
           ))}
           <Link
-            href="#donate"
+            href="/donate"
             className="mt-3 bg-[#ff6f61] hover:bg-[#e85d50] text-white py-3 px-5 rounded-xl font-semibold text-center transition-colors"
             onClick={() => setIsOpen(false)}
           >

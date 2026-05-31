@@ -1,3 +1,7 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = { title: "Managing Cancer Care" };
+
 import React from 'react';
 import Image from 'next/image';
 

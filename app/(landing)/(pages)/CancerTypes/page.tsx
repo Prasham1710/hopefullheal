@@ -1,3 +1,10 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Cancer Types",
+  description: "Browse 100+ cancer types — learn about symptoms, treatment, causes, and screening for each type.",
+};
+
 import Link from "next/link";
 import React from "react";
 import { FaRibbon } from "react-icons/fa";

@@ -89,12 +89,12 @@ export default async function CartPage() {
                   </div>
                 </div>
 
-                <button
-                  type="button"
-                  className="w-full bg-[#ff6f61] hover:bg-[#e85d50] text-white font-bold py-3.5 px-6 rounded-xl shadow-md shadow-[#ff6f61]/25 hover:scale-[1.02] transition-all duration-200 text-sm mb-3"
+                <Link
+                  href="/doctor/checkout"
+                  className="block w-full text-center bg-[#ff6f61] hover:bg-[#e85d50] text-white font-bold py-3.5 px-6 rounded-xl shadow-md shadow-[#ff6f61]/25 hover:scale-[1.02] transition-all duration-200 text-sm mb-3"
                 >
                   Proceed to Checkout
-                </button>
+                </Link>
 
                 <Link
                   href="/doctor"

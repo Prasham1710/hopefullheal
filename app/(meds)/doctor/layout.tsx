@@ -8,8 +8,19 @@ import SessionProvider from "./_components/SessionProvider";
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 
 export const metadata: Metadata = {
-  title: "Medicines — Hopeful Heals",
-  description: "Authentic cancer medications delivered to your door",
+  title: { default: "Medicines — Hopeful Heals", template: "%s — Hopeful Heals" },
+  description: "Authentic, pharmacy-verified cancer medications delivered safely to your door across India.",
+  openGraph: {
+    type: "website",
+    siteName: "Hopeful Heals",
+    title: "Medicines — Hopeful Heals",
+    description: "Authentic, pharmacy-verified cancer medications delivered safely to your door.",
+  },
+  twitter: {
+    card: "summary",
+    title: "Medicines — Hopeful Heals",
+    description: "Authentic, pharmacy-verified cancer medications delivered safely to your door.",
+  },
 };
 
 export default function RootLayout({

@@ -7,7 +7,7 @@ import { formatPrice } from "@/lib/format";
 import AddToCartButton from "../../../_components/AddToCartButton";
 import { incrementProductQuantity } from "./actions";
 import { BsShieldCheck, BsCartCheck } from "react-icons/bs";
-import { FaTruck, FaStar, FaStarHalfAlt } from "react-icons/fa";
+import { FaTruck } from "react-icons/fa";
 import { FlaskConical, Package, Stethoscope } from "lucide-react";
 
 interface ProductPageProps {
@@ -87,14 +87,10 @@ export default async function ProductPage({ params: { id } }: ProductPageProps) 
           {/* ── Right: Details ── */}
           <div className="flex flex-col gap-5">
 
-            {/* Rating */}
-            <div className="flex items-center gap-2">
-              <div className="flex items-center gap-0.5">
-                {[1,2,3,4].map((s) => <FaStar key={s} size={14} className="text-[#ff6f61]" />)}
-                <FaStarHalfAlt size={14} className="text-[#ff6f61]" />
-              </div>
-              <span className="text-[#688ca2] text-sm">4.5 · Verified product</span>
-            </div>
+            {/* Verified badge */}
+            <span className="inline-flex items-center gap-1.5 bg-green-50 text-green-700 text-xs font-bold px-3 py-1.5 rounded-full border border-green-200 w-fit">
+              ✓ Pharmacy Verified Product
+            </span>
 
             {/* Name */}
             <h1 className="font-black text-2xl sm:text-3xl text-[#243a50] leading-snug">

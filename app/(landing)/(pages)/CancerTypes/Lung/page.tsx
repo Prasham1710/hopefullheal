@@ -1,3 +1,10 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Lung Cancer",
+  description: "Comprehensive guide to lung cancer — symptoms, types, treatment options, causes, and screening.",
+};
+
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";

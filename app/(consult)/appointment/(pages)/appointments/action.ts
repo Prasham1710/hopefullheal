@@ -1,27 +1,33 @@
 "use server";
 
-import  prisma  from "@/lib/db/prisma";
-
+import prisma from "@/lib/db/prisma";
+import { authOptions } from "@/lib/utils/authOptions";
+import { getServerSession } from "next-auth";
 import { revalidatePath } from "next/cache";
+
 export async function datageter() {
-  try {
-    const products = await prisma.appointment.findMany();
-    revalidatePath("doctors");
-    return products;
-  } catch (error) {
-    console.error("Error fetching all products:");
-    throw new Error("Failed to fetch all products");
-  }
+  const session = await getServerSession(authOptions);
+  if (!session?.user) throw new Error("Unauthorized");
+
+  const appointments = await prisma.appointment.findMany({
+    where: { patient: session.user.name ?? "" },
+    orderBy: { id: "desc" },
+  });
+  revalidatePath("/appointment/appointments");
+  return appointments;
 }
+
 export async function deleteAppointment(id: string) {
-  try {
-    await prisma.appointment.delete({
-      where: { id },
-    });
-    revalidatePath("doctors");
-    return { success: true, message: "Appointment deleted successfully" };
-  } catch (error) {
-    console.error("Error deleting appointment:", error);
-    throw new Error("Failed to delete the appointment");
-  }
+  const session = await getServerSession(authOptions);
+  if (!session?.user) throw new Error("Unauthorized");
+
+  // Verify the appointment belongs to this user before deleting
+  const appointment = await prisma.appointment.findFirst({
+    where: { id, patient: session.user.name ?? "" },
+  });
+  if (!appointment) throw new Error("Not found");
+
+  await prisma.appointment.delete({ where: { id } });
+  revalidatePath("/appointment/appointments");
+  return { success: true };
 }

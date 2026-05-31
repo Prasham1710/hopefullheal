@@ -14,8 +14,26 @@ const AIAssistant = dynamic(
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 
 export const metadata: Metadata = {
-  title: "Hopeful Heals — Support. Educate. Advocate.",
-  description: "India's trusted cancer care platform — consultations, medications, and support.",
+  title: {
+    default: "Hopeful Heals — Support. Educate. Advocate.",
+    template: "%s — Hopeful Heals",
+  },
+  description: "India's trusted cancer care platform connecting patients with oncologists, authentic medications, and cancer resources.",
+  keywords: ["cancer care", "oncology", "cancer treatment India", "cancer medicines", "book oncologist"],
+  authors: [{ name: "Hopeful Heals" }],
+  openGraph: {
+    type: "website",
+    locale: "en_IN",
+    url: "https://hopefulheals.vercel.app",
+    siteName: "Hopeful Heals",
+    title: "Hopeful Heals — Support. Educate. Advocate.",
+    description: "India's trusted cancer care platform connecting patients with oncologists, authentic medications, and cancer resources.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Hopeful Heals — Support. Educate. Advocate.",
+    description: "India's trusted cancer care platform connecting patients with oncologists, authentic medications, and cancer resources.",
+  },
 };
 
 export default function RootLayout({

@@ -8,8 +8,19 @@ import Footer from "./_components/Footer";
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 
 export const metadata: Metadata = {
-  title: "Appointments — Hopeful Heals",
-  description: "Book and manage cancer consultations with verified oncologists",
+  title: { default: "Appointments — Hopeful Heals", template: "%s — Hopeful Heals" },
+  description: "Book and manage cancer consultations with India's top verified oncologists on Hopeful Heals.",
+  openGraph: {
+    type: "website",
+    siteName: "Hopeful Heals",
+    title: "Appointments — Hopeful Heals",
+    description: "Book and manage cancer consultations with India's top verified oncologists.",
+  },
+  twitter: {
+    card: "summary",
+    title: "Appointments — Hopeful Heals",
+    description: "Book and manage cancer consultations with India's top verified oncologists.",
+  },
 };
 
 export default function RootLayout({

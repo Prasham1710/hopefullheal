@@ -1,3 +1,7 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = { title: "Cancer and Genetics" };
+
 import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -11,23 +15,23 @@ const Diag = () => {
             <div className="flex flex-col  p-3  shadow w-60 bg-[#00416a] ">
                 <div className="space-y-3  ">
                     <div className="flex items-center">
-                    <h2 className="text-lg font-bold text-[#b1c0ca] mt-14 transition-transform transform hover:scale-110 hover:shadow-xl "><Link href='/components/AboutCancer/Causes'>Causes and Prevention</Link> </h2>
+                    <h2 className="text-lg font-bold text-[#b1c0ca] mt-14 transition-transform transform hover:scale-110 hover:shadow-xl "><Link href='/AboutCancer/Causes'>Causes and Prevention</Link> </h2>
                     </div>
                     <div className="flex-1">
                         <ul className="pt-2 pb-4 space-y-1 text-sm">
                             <li className=" flex items-center p-2 space-x-3 rounded-md">
                                 
-                                    <span className='font-bold text-[#b1c0ca] hover:underline transition-transform transform hover:scale-110 hover:shadow-lg'><Link href='/components/AboutCancer/Causes/Risk'>Risk Factors</Link> </span>
+                                    <span className='font-bold text-[#b1c0ca] hover:underline transition-transform transform hover:scale-110 hover:shadow-lg'><Link href='/AboutCancer/Causes/Risk'>Risk Factors</Link> </span>
                                 
                             </li>
                             <li className=" flex items-center p-2 space-x-3 rounded-md">
                                 
-                                    <span className='font-bold text-[#b1c0ca] hover:underline transition-transform transform hover:scale-110 hover:shadow-lg'><Link href='/components/AboutCancer/Causes/Genetics'>Genetics</Link></span>
+                                    <span className='font-bold text-[#b1c0ca] hover:underline transition-transform transform hover:scale-110 hover:shadow-lg'><Link href='/AboutCancer/Causes/Genetics'>Genetics</Link></span>
                                 
                             </li>
                             <li className=" flex items-center p-2 space-x-3 rounded-md">
                                 
-                                <span className='font-bold text-[#b1c0ca] hover:underline transition-transform transform hover:scale-110 hover:shadow-lg'><Link href='/components/AboutCancer/Causes/Cancer'>Cancer Prevention Overview</Link></span>
+                                <span className='font-bold text-[#b1c0ca] hover:underline transition-transform transform hover:scale-110 hover:shadow-lg'><Link href='/AboutCancer/Causes/Cancer'>Cancer Prevention Overview</Link></span>
                                 
                             </li>
                         </ul>

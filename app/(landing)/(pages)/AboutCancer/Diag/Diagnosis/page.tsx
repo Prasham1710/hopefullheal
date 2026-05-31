@@ -1,3 +1,7 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = { title: "Getting a Diagnosis" };
+
 import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -11,27 +15,27 @@ const Diag = () => {
         <div className="flex flex-col  p-3  shadow w-60 bg-[#00416a] ">
             <div className="space-y-3  ">
                 <div className="flex items-center">
-                    <h2 className="text-lg font-bold text-[#b1c0ca] mt-14 transition-transform transform hover:scale-110 hover:shadow-xl "><Link href='/components/AboutCancer/Diag'>Diagnosis and Staging</Link> </h2>
+                    <h2 className="text-lg font-bold text-[#b1c0ca] mt-14 transition-transform transform hover:scale-110 hover:shadow-xl "><Link href='/AboutCancer/Diag'>Diagnosis and Staging</Link> </h2>
                     </div>
                     <div className="flex-1">
                         <ul className="pt-2 pb-4 space-y-1 text-sm">
                             <li className=" flex items-center p-2 space-x-3 rounded-md">
                                 
-                                    <span className='font-bold text-[#b1c0ca] hover:underline transition-transform transform hover:scale-110 hover:shadow-lg'><Link href='/components/AboutCancer/Diag/Symptoms'>Symptoms</Link> </span>
+                                    <span className='font-bold text-[#b1c0ca] hover:underline transition-transform transform hover:scale-110 hover:shadow-lg'><Link href='/AboutCancer/Diag/Symptoms'>Symptoms</Link> </span>
                                 
                             </li>
                             <li className=" flex items-center p-2 space-x-3 rounded-md">
                                 
-                                    <span className='font-bold text-[#b1c0ca] hover:underline transition-transform transform hover:scale-110 hover:shadow-lg'><Link href='/components/AboutCancer/Diag/Diagnosis'>Diagnosis</Link></span>
+                                    <span className='font-bold text-[#b1c0ca] hover:underline transition-transform transform hover:scale-110 hover:shadow-lg'><Link href='/AboutCancer/Diag/Diagnosis'>Diagnosis</Link></span>
                                 
                             </li>
                             <li className="flex items-center p-2 space-x-3 rounded-md">
                                 
-                                    <span className='font-bold text-[#b1c0ca] hover:underline transition-transform transform hover:scale-110 hover:shadow-lg'><Link href='/components/AboutCancer/Diag/Staging'>Staging</Link></span>
+                                    <span className='font-bold text-[#b1c0ca] hover:underline transition-transform transform hover:scale-110 hover:shadow-lg'><Link href='/AboutCancer/Diag/Staging'>Staging</Link></span>
                             </li>
                             <li className="flex items-center p-2 space-x-3 rounded-md">
                                 
-                                    <span className='font-bold text-[#b1c0ca] hover:underline transition-transform transform hover:scale-110 hover:shadow-lg'><Link href='/components/AboutCancer/Diag/Questions'>Questions to Ask About Your Cancer</Link></span>
+                                    <span className='font-bold text-[#b1c0ca] hover:underline transition-transform transform hover:scale-110 hover:shadow-lg'><Link href='/AboutCancer/Diag/Questions'>Questions to Ask About Your Cancer</Link></span>
                             </li>
                         </ul>
                     </div>

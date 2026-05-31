@@ -2,8 +2,22 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import bg from "/public/bg.png";
+import prisma from "@/lib/db/prisma";
 
-const Hero = () => {
+const Hero = async () => {
+  const [doctorCount, productCount, appointmentCount] = await Promise.all([
+    prisma.doctor.count(),
+    prisma.product.count(),
+    prisma.appointment.count(),
+  ]);
+
+  const stats = [
+    { value: appointmentCount > 0 ? `${appointmentCount}+` : "Growing", label: "Appointments Booked" },
+    { value: doctorCount > 0 ? `${doctorCount}+` : "Expert", label: "Oncologists" },
+    { value: productCount > 0 ? `${productCount}+` : "Verified", label: "Medications" },
+    { value: "24/7", label: "AI Support" },
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#00416a] via-[#003255] to-[#001f33] flex flex-col">
       {/* Main content */}
@@ -31,7 +45,7 @@ const Hero = () => {
               oncologists, authentic medications, and a supportive community.
             </p>
             <p className="text-[#688ca2] text-base italic mb-8">
-              "Cancer hi toh h, darna kya!!"
+              &ldquo;Cancer hi toh h, darna kya!!&rdquo;
             </p>
 
             <div className="flex flex-wrap gap-4">
@@ -67,15 +81,10 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Stats bar */}
+      {/* Stats bar — real data from DB */}
       <div className="bg-white/5 backdrop-blur-sm border-t border-white/10">
         <div className="max-w-7xl mx-auto px-6 py-6 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-          {[
-            { value: "50,000+", label: "Patients Helped" },
-            { value: "200+", label: "Oncologists" },
-            { value: "1,000+", label: "Medications" },
-            { value: "24/7", label: "AI Support" },
-          ].map(({ value, label }) => (
+          {stats.map(({ value, label }) => (
             <div key={label}>
               <p className="text-2xl font-black text-white">{value}</p>
               <p className="text-[#b1c0ca] text-sm mt-1">{label}</p>
