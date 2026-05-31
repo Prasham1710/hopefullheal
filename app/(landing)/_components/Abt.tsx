@@ -8,17 +8,14 @@ const Abt = () => {
         Empowering Hope, Healing, and Health: Your Cancer Companion
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 mx-6 md:mx-20 items-center">
-        {/* Continuously rotating doctors collage */}
-        <div className="flex justify-center items-center">
-          <div className="animate-rotate-slow">
-            <Image
-              src="/bg1.jpg"
-              alt="Our doctors"
-              width={500}
-              height={600}
-              loading="lazy"
-            />
-          </div>
+        <div className="flex justify-center">
+          <Image
+            src="/woman.jpg"
+            alt="bg"
+            width={600}
+            height={700}
+            className="rounded-xl shadow-lg transition-transform transform hover:scale-105"
+          />
         </div>
 
         <div className="my-8 md:my-16">
