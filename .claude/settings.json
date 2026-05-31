@@ -1,7 +1,10 @@
 {
   "permissions": {
     "allow": [
-      "Bash(xargs sed -i \"s/from-blue-100 via-blue-50 via-white via-blue-50 to-blue-100/from-[#f0f4f8] to-white/g; s/from-blue-100/from-[#f0f4f8]/g; s/via-blue-50 via-white via-blue-50//g; s/to-blue-100/to-white/g; s/bg-blue-REMOVED-//g; s/hover:bg-\\\\[#003255\\\\] hover:bg-blue-REMOVED-//g\")"
+      "Bash(xargs sed -i \"s/from-blue-100 via-blue-50 via-white via-blue-50 to-blue-100/from-[#f0f4f8] to-white/g; s/from-blue-100/from-[#f0f4f8]/g; s/via-blue-50 via-white via-blue-50//g; s/to-blue-100/to-white/g; s/bg-blue-REMOVED-//g; s/hover:bg-\\\\[#003255\\\\] hover:bg-blue-REMOVED-//g\")",
+      "Bash(xargs sed -i 's|href=\"#donate\"|href=\"/donate\"|g; s|href='\"'\"'#donate'\"'\"'|href=\"/donate\"|g')",
+      "Bash(sed -i '1s/^/import type { Metadata } from \"next\";\\\\n\\\\nexport const metadata: Metadata = {\\\\n  title: \"Cancer Types\",\\\\n  description: \"Browse 100+ cancer types — learn about symptoms, treatment, causes, and screening for each type.\",\\\\n};\\\\n\\\\n/' \"app/\\(landing\\)/\\(pages\\)/CancerTypes/page.tsx\")",
+      "Bash(sed -i '1s/^/import type { Metadata } from \"next\";\\\\n\\\\nexport const metadata: Metadata = {\\\\n  title: \"Lung Cancer\",\\\\n  description: \"Comprehensive guide to lung cancer — symptoms, types, treatment options, causes, and screening.\",\\\\n};\\\\n\\\\n/' \"app/\\(landing\\)/\\(pages\\)/CancerTypes/Lung/page.tsx\")"
     ]
   }
 }

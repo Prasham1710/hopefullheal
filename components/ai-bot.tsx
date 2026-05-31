@@ -92,7 +92,7 @@ export function AIAssistant({ section }: { section?: string }) {
             <p className="text-white text-sm font-bold leading-tight">{title}</p>
             <p className="text-[#b1c0ca] text-xs flex items-center gap-1">
               <span className="w-1.5 h-1.5 rounded-full bg-green-400 inline-block" />
-              Online · No API required
+              Online · Hopeful Heals
             </p>
           </div>
         </div>

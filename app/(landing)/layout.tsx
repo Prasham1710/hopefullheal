@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: "https://hopefulheals.vercel.app",
+    url: "https://hopeforheals.vercel.app",
     siteName: "Hopeful Heals",
     title: "Hopeful Heals — Support. Educate. Advocate.",
     description: "India's trusted cancer care platform connecting patients with oncologists, authentic medications, and cancer resources.",

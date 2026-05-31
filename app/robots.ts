@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/api/", "/doctor/add-product"],
     },
-    sitemap: "https://hopefulheals.vercel.app/sitemap.xml",
+    sitemap: "https://hopeforheals.vercel.app/sitemap.xml",
   };
 }
