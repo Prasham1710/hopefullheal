@@ -4,24 +4,21 @@ interface PaginationBarProps {
   currentPage: number;
   totalPages: number;
 }
-export default function PaginationBar({
-  currentPage,
-  totalPages,
-}: PaginationBarProps) {
-    const maxPage = Math.min(totalPages, Math.max(currentPage + 4, 10));
-    const minPage = Math.max(1, Math.min(currentPage - 5, maxPage - 9));
-    
-  const numberedPageItems: JSX.Element[] = [];
 
+export default function PaginationBar({ currentPage, totalPages }: PaginationBarProps) {
+  const maxPage = Math.min(totalPages, Math.max(currentPage + 4, 10));
+  const minPage = Math.max(1, Math.min(currentPage - 5, maxPage - 9));
+
+  const pages: JSX.Element[] = [];
   for (let page = minPage; page <= maxPage; page++) {
-    numberedPageItems.push(
+    pages.push(
       <Link
         href={"?page=" + page}
         key={page}
-        className={`join-item px-4 py-2 rounded-md text-sm font-semibold ${
+        className={`w-10 h-10 flex items-center justify-center rounded-xl text-sm font-semibold transition-all duration-200 ${
           currentPage === page
-            ? "bg-blue-600 text-white pointer-events-none"
-            : "bg-gray-100 hover:bg-blue-500 hover:text-white transition duration-300"
+            ? "bg-[#00416a] text-white shadow-md pointer-events-none"
+            : "bg-white text-[#243a50] border border-[#e4e5e6] hover:bg-[#e4e5e6]"
         }`}
       >
         {page}
@@ -30,49 +27,29 @@ export default function PaginationBar({
   }
 
   return (
-          <div className="flex justify-center my-6 space-x-2">
-      {/* Pagination for larger screens */}
-      <div className="hidden sm:flex space-x-2">
-        {currentPage > 1 && (
-          <Link
-            href={"?page=" + (currentPage - 1)}
-            className="px-4 py-2 bg-gray-100 hover:bg-blue-500 hover:text-white transition duration-300 rounded-md"
-          >
-            «
-          </Link>
-        )}
-        {numberedPageItems}
-        {currentPage < totalPages && (
-          <Link
-            href={"?page=" + (currentPage + 1)}
-            className="px-4 py-2 bg-gray-100 hover:bg-blue-500 hover:text-white transition duration-300 rounded-md"
-          >
-            »
-          </Link>
-        )}
-      </div>
-      <div className="sm:hidden flex space-x-2">
-        {currentPage > 1 && (
-          <Link
-            href={"?page=" + (currentPage - 1)}
-            className="px-4 py-2 bg-gray-100 hover:bg-blue-500 hover:text-white transition duration-300 rounded-md"
-          >
-            «
-          </Link>
-        )}
-        <button className="px-4 py-2 bg-blue-600 text-white rounded-md pointer-events-none">
+    <div className="flex items-center gap-2">
+      {currentPage > 1 && (
+        <Link
+          href={"?page=" + (currentPage - 1)}
+          className="w-10 h-10 flex items-center justify-center rounded-xl bg-white border border-[#e4e5e6] text-[#243a50] hover:bg-[#e4e5e6] transition-all duration-200 font-semibold"
+        >
+          ‹
+        </Link>
+      )}
+      <div className="hidden sm:flex items-center gap-2">{pages}</div>
+      <div className="sm:hidden">
+        <span className="px-4 h-10 flex items-center bg-[#00416a] text-white font-semibold rounded-xl text-sm">
           Page {currentPage}
-        </button>
-        {currentPage < totalPages && (
-          <Link
-            href={"?page=" + (currentPage + 1)}
-            className="px-4 py-2 bg-gray-100 hover:bg-blue-500 hover:text-white transition duration-300 rounded-md"
-          >
-            »
-          </Link>
-        )}
+        </span>
       </div>
+      {currentPage < totalPages && (
+        <Link
+          href={"?page=" + (currentPage + 1)}
+          className="w-10 h-10 flex items-center justify-center rounded-xl bg-white border border-[#e4e5e6] text-[#243a50] hover:bg-[#e4e5e6] transition-all duration-200 font-semibold"
+        >
+          ›
+        </Link>
+      )}
     </div>
   );
 }
-

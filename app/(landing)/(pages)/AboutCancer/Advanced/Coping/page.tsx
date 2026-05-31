@@ -8,39 +8,39 @@ const Diag = () => {
         
 
         <div className="flex">
-            <div className="flex flex-col  p-3  shadow w-60 bg-blue-900 ">
+            <div className="flex flex-col  p-3  shadow w-60 bg-[#00416a] ">
                 <div className="space-y-3  ">
                     <div className="flex items-center">
-                    <h2 className="text-lg font-bold text-blue-100 mt-14 transition-transform transform hover:scale-110 hover:shadow-xl "><Link href=' /components/AboutCancer/Advanced'>Advanced Cancer</Link> </h2>
+                    <h2 className="text-lg font-bold text-[#b1c0ca] mt-14 transition-transform transform hover:scale-110 hover:shadow-xl "><Link href=' /components/AboutCancer/Advanced'>Advanced Cancer</Link> </h2>
                     </div>
                     <div className="flex-1">
                         <ul className="pt-2 pb-4 space-y-1 text-sm">
                             <li className=" flex items-center p-2 space-x-3 rounded-md">
                                 
-                                    <span className='font-bold text-blue-100 hover:underline transition-transform transform hover:scale-110 hover:shadow-lg'><Link href='/components/AboutCancer/Advanced/Choices'>Choices for Care</Link> </span>
+                                    <span className='font-bold text-[#b1c0ca] hover:underline transition-transform transform hover:scale-110 hover:shadow-lg'><Link href='/components/AboutCancer/Advanced/Choices'>Choices for Care</Link> </span>
                                 
                             </li>
                             <li className=" flex items-center p-2 space-x-3 rounded-md">
                                 
-                                    <span className='font-bold text-blue-100 hover:underline transition-transform transform hover:scale-110 hover:shadow-lg'><Link href='/components/AboutCancer/Advanced/Talking'>Talking to Family & Friends</Link></span>
+                                    <span className='font-bold text-[#b1c0ca] hover:underline transition-transform transform hover:scale-110 hover:shadow-lg'><Link href='/components/AboutCancer/Advanced/Talking'>Talking to Family & Friends</Link></span>
                                 
                             </li>
                             <li className=" flex items-center p-2 space-x-3 rounded-md">
                                 
-                                    <span className='font-bold text-blue-100 hover:underline transition-transform transform hover:scale-110 hover:shadow-lg'><Link href='/components/AboutCancer/Advanced/Coping'>Coping with Your Feelings During Advanced Cancer</Link></span>
+                                    <span className='font-bold text-[#b1c0ca] hover:underline transition-transform transform hover:scale-110 hover:shadow-lg'><Link href='/components/AboutCancer/Advanced/Coping'>Coping with Your Feelings During Advanced Cancer</Link></span>
                                 
                             </li>
                             <li className=" flex items-center p-2 space-x-3 rounded-md">
                                 
-                                    <span className='font-bold text-blue-100 hover:underline transition-transform transform hover:scale-110 hover:shadow-lg'><Link href='/components/AboutCancer/Advanced/Future'>Making Future Plans with Advanced Cancer</Link></span>
+                                    <span className='font-bold text-[#b1c0ca] hover:underline transition-transform transform hover:scale-110 hover:shadow-lg'><Link href='/components/AboutCancer/Advanced/Future'>Making Future Plans with Advanced Cancer</Link></span>
                             </li>
                             <li className=" flex items-center p-2 space-x-3 rounded-md">
                                 
-                                <span className='font-bold text-blue-100 hover:underline transition-transform transform hover:scale-110 hover:shadow-lg'><Link href='/components/AboutCancer/Advanced/Purpose'>Finding Purpose and Meaning with Advanced Cancer</Link></span>
+                                <span className='font-bold text-[#b1c0ca] hover:underline transition-transform transform hover:scale-110 hover:shadow-lg'><Link href='/components/AboutCancer/Advanced/Purpose'>Finding Purpose and Meaning with Advanced Cancer</Link></span>
                             </li>
                             <li className=" flex items-center p-2 space-x-3 rounded-md">
                                 
-                                    <span className='font-bold text-blue-100 hover:underline transition-transform transform hover:scale-110 hover:shadow-lg'><Link href='/components/AboutCancer/Advanced/Questions'>Questions to Ask Your Doctor about Advanced Cancer</Link></span>
+                                    <span className='font-bold text-[#b1c0ca] hover:underline transition-transform transform hover:scale-110 hover:shadow-lg'><Link href='/components/AboutCancer/Advanced/Questions'>Questions to Ask Your Doctor about Advanced Cancer</Link></span>
                             </li>
                         </ul>
                     </div>

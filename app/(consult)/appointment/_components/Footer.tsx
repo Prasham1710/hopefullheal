@@ -1,4 +1,5 @@
 import React from "react";
+import Logo from "@/components/logo";
 import {
   FaFacebookF,
   FaTwitter,
@@ -11,7 +12,7 @@ const Footer = () => {
     <div className="bg-gradient-to-r from-[#183b56] to-[#0e1f2f] text-white py-10">
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-start md:items-center px-4 md:px-0">
         <div className="flex items-center mb-6 md:mb-0">
-          <p className="font-bold text-4xl">Hopeful Heals</p>
+          <Logo href="/" />
         </div>
 
         <div className="flex flex-col md:flex-row gap-12 mb-6 md:mb-0">

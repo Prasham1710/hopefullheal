@@ -1,4 +1,8 @@
-import React from "react";
+"use client";
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
+import Logo from "@/components/logo";
+import { Menu, X, ChevronDown } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -7,106 +11,83 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import Link from "next/link";
 
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <div className="bg-gradient-to-r from-[#00416a] to-[#003255] w-screen py-4">
-      <div className="max-w-7xl mx-auto flex justify-between items-center px-6">
-       
-        <p className="text-[#b1c0ca] text-2xl font-bold">
-          <Link href="/">Hopeful Heals</Link>
-        </p>
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-[#001f33]/95 backdrop-blur-md shadow-lg"
+          : "bg-gradient-to-r from-[#00416a] to-[#003255]"
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+        {/* Logo */}
+        <Logo href="/" />
 
-        
-        <p className="hidden md:block font-semibold text-lg text-[#b1c0ca]">
-          Fighting One Step At a Time.
-        </p>
-
-        {/* Menu and Actions */}
-        <div className="flex items-center space-x-8">
-          {/* About Cancer Dropdown */}
+        {/* Desktop Nav */}
+        <div className="hidden md:flex items-center gap-5">
           <DropdownMenu>
-            <DropdownMenuTrigger className="text-white font-medium hover:underline">
-              About Cancer
+            <DropdownMenuTrigger className="text-white/80 hover:text-white font-medium flex items-center gap-1 transition-colors outline-none">
+              About Cancer <ChevronDown size={13} />
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="bg-white shadow-md">
-              <DropdownMenuLabel className="text-gray-700">
-                Explore About Cancer
+            <DropdownMenuContent className="bg-[#001f33] border border-[#00416a]/30 text-white shadow-xl">
+              <DropdownMenuLabel className="text-[#b1c0ca] text-xs uppercase tracking-widest">
+                Explore
               </DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <Link href="/AboutCancer/Understanding">
-                <DropdownMenuItem className="hover:bg-gray-100">
-                  Understanding Cancer
-                </DropdownMenuItem>
-              </Link>
-              <Link href="/AboutCancer/Diag">
-                <DropdownMenuItem className="hover:bg-gray-100">
-                  Diagnosis & Staging
-                </DropdownMenuItem>
-              </Link>
-              <Link href="/AboutCancer/Advanced">
-                <DropdownMenuItem className="hover:bg-gray-100">
-                  Advanced Cancer
-                </DropdownMenuItem>
-              </Link>
-              <Link href="/AboutCancer/Causes">
-                <DropdownMenuItem className="hover:bg-gray-100">
-                  Causes & Prevention
-                </DropdownMenuItem>
-              </Link>
-              <Link href="/AboutCancer/Managing">
-                <DropdownMenuItem className="hover:bg-gray-100">
-                  Managing Cancer Care
-                </DropdownMenuItem>
-              </Link>
-              <Link href="/AboutCancer/Coping">
-                <DropdownMenuItem className="hover:bg-gray-100">
-                  Coping
-                </DropdownMenuItem>
-              </Link>
+              <DropdownMenuSeparator className="bg-white/10" />
+              {[
+                ["Understanding Cancer", "/AboutCancer/Understanding"],
+                ["Diagnosis & Staging", "/AboutCancer/Diag"],
+                ["Advanced Cancer", "/AboutCancer/Advanced"],
+                ["Causes & Prevention", "/AboutCancer/Causes"],
+                ["Managing Care", "/AboutCancer/Managing"],
+                ["Coping", "/AboutCancer/Coping"],
+              ].map(([label, href]) => (
+                <Link href={href} key={label}>
+                  <DropdownMenuItem className="hover:bg-[#00416a] cursor-pointer focus:bg-[#00416a] text-white/80 hover:text-white">
+                    {label}
+                  </DropdownMenuItem>
+                </Link>
+              ))}
             </DropdownMenuContent>
           </DropdownMenu>
 
-          {/* Cancer Types Dropdown */}
           <DropdownMenu>
-            <DropdownMenuTrigger className="text-white font-medium hover:underline">
-              Cancer Types
+            <DropdownMenuTrigger className="text-white/80 hover:text-white font-medium flex items-center gap-1 transition-colors outline-none">
+              Cancer Types <ChevronDown size={13} />
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="bg-white shadow-md">
-              <DropdownMenuLabel className="text-gray-700">
-                Common Cancer Types
+            <DropdownMenuContent className="bg-[#001f33] border border-[#00416a]/30 text-white shadow-xl">
+              <DropdownMenuLabel className="text-[#b1c0ca] text-xs uppercase tracking-widest">
+                Types
               </DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem className="hover:bg-gray-100">
-                Bladder Cancer
-              </DropdownMenuItem>
-              <DropdownMenuItem className="hover:bg-gray-100">
-                Skin Cancer
-              </DropdownMenuItem>
-              <DropdownMenuItem className="hover:bg-gray-100">
-                Pancreatic Cancer
-              </DropdownMenuItem>
-              <DropdownMenuItem className="hover:bg-gray-100">
-                Kidney (Renal Cell) Cancer
-              </DropdownMenuItem>
-              <DropdownMenuItem className="hover:bg-gray-100">
-                Breast Cancer
-              </DropdownMenuItem>
-              <DropdownMenuItem className="hover:bg-gray-100">
-                Lymphoma
-              </DropdownMenuItem>
+              <DropdownMenuSeparator className="bg-white/10" />
+              {["Bladder", "Skin", "Pancreatic", "Kidney", "Breast", "Lymphoma", "Brain Tumor"].map((type) => (
+                <DropdownMenuItem
+                  key={type}
+                  className="hover:bg-[#00416a] cursor-pointer text-white/80 hover:text-white"
+                >
+                  {type} Cancer
+                </DropdownMenuItem>
+              ))}
               <Link href="/CancerTypes/Lung">
-                <DropdownMenuItem className="hover:bg-gray-100">
+                <DropdownMenuItem className="hover:bg-[#00416a] cursor-pointer text-white/80 hover:text-white">
                   Lung Cancer
                 </DropdownMenuItem>
               </Link>
-              <DropdownMenuItem className="hover:bg-gray-100">
-                Brain Tumor
-              </DropdownMenuItem>
+              <DropdownMenuSeparator className="bg-white/10" />
               <Link href="/CancerTypes">
-                <DropdownMenuItem className="hover:bg-gray-100">
-                  All Types
+                <DropdownMenuItem className="hover:bg-[#00416a] cursor-pointer font-semibold text-[#ff6f61]">
+                  View All Types →
                 </DropdownMenuItem>
               </Link>
             </DropdownMenuContent>
@@ -114,27 +95,73 @@ const Navbar = () => {
 
           <Link
             href="/appointment"
-            className="text-white font-medium hover:underline"
+            className="text-white/80 hover:text-white font-medium transition-colors"
           >
             Book Appointment
           </Link>
           <Link
             href="/doctor"
-            className="text-white font-medium hover:underline"
+            className="text-white/80 hover:text-white font-medium transition-colors"
           >
             Medicines
           </Link>
-          <button className="text-white font-medium hover:underline">
+          <Link
+            href="#about"
+            className="text-white/80 hover:text-white font-medium transition-colors"
+          >
             About Us
-          </button>
-
-          {/* Donate Button */}
-          <button className="bg-[#ff6f61] hover:bg-[#ff4e45] text-white py-2 px-4 rounded-lg font-semibold">
+          </Link>
+          <Link
+            href="#donate"
+            className="bg-[#ff6f61] hover:bg-[#e85d50] text-white py-2 px-5 rounded-xl font-semibold transition-all duration-200 hover:shadow-lg hover:shadow-[#ff6f61]/30 hover:scale-105"
+          >
             Donate Now
-          </button>
+          </Link>
+        </div>
+
+        {/* Mobile toggle */}
+        <button
+          className="md:hidden text-white p-1"
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle menu"
+        >
+          {isOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </div>
+
+      {/* Mobile menu */}
+      <div
+        className={`md:hidden overflow-hidden transition-all duration-300 ${
+          isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+        } bg-[#001f33] border-t border-white/10`}
+      >
+        <div className="px-6 py-4 flex flex-col gap-1">
+          {[
+            ["Understanding Cancer", "/AboutCancer/Understanding"],
+            ["Cancer Types", "/CancerTypes"],
+            ["Book Appointment", "/appointment"],
+            ["Medicines", "/doctor"],
+            ["About Us", "#about"],
+          ].map(([label, href]) => (
+            <Link
+              key={label}
+              href={href}
+              className="text-white/80 hover:text-white py-2.5 border-b border-white/10 text-sm font-medium transition-colors"
+              onClick={() => setIsOpen(false)}
+            >
+              {label}
+            </Link>
+          ))}
+          <Link
+            href="#donate"
+            className="mt-3 bg-[#ff6f61] hover:bg-[#e85d50] text-white py-3 px-5 rounded-xl font-semibold text-center transition-colors"
+            onClick={() => setIsOpen(false)}
+          >
+            Donate Now
+          </Link>
         </div>
       </div>
-    </div>
+    </nav>
   );
 };
 

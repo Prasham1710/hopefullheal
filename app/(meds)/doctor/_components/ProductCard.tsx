@@ -2,7 +2,8 @@ import { Product } from "@prisma/client";
 import Link from "next/link";
 import PriceTag from "./PriceTag";
 import Image from "next/image";
-import { FaStethoscope } from "react-icons/fa";
+import AddToCartButton from "./AddToCartButton";
+import { incrementProductQuantity } from "../(pages)/products/[id]/actions";
 
 interface ProductCardProps {
   product: Product;
@@ -10,37 +11,56 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
   const isNew =
-    Date.now() - new Date(product.createdAt).getTime() <
-    1000 * 60 * 60 * 24 * 7; // Product is considered new if created within the last 7 days
+    Date.now() - new Date(product.createdAt).getTime() < 1000 * 60 * 60 * 24 * 7;
 
   return (
-    <Link href={"doctor/products/" + product.id}>
-      <div className="card w-full bg-gradient-to-br from-green-100 via-blue-100 to-purple-100 shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:scale-105 rounded-lg overflow-hidden cursor-pointer">
-        {/* Image Section */}
-        <figure className="relative">
+    <div className="group bg-white rounded-2xl overflow-hidden shadow-sm border border-[#e4e5e6] hover:border-[#00416a]/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col">
+      {/* Image — links to product page */}
+      <Link href={"doctor/products/" + product.id} className="block">
+        <div className="relative h-48 bg-[#f0f4f8] overflow-hidden">
+          {isNew && (
+            <span className="absolute top-3 left-3 z-10 bg-[#ff6f61] text-white text-xs font-bold px-2.5 py-1 rounded-full shadow-sm">
+              New
+            </span>
+          )}
           <Image
             src={product.imageUrl}
             alt={product.name}
-            width={800}
-            height={400}
-            className="h-48 w-full object-cover transition-transform duration-300 hover:scale-110"
+            width={400}
+            height={200}
+            loading="lazy"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+            className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
           />
-        </figure>
+        </div>
+      </Link>
 
-        {/* Product Details Section */}
-        <div className="card-body p-4">
-          <h2 className="card-title text-2xl font-bold text-gray-800 mb-2 truncate">
+      {/* Info */}
+      <div className="p-4 flex flex-col flex-1">
+        <Link href={"doctor/products/" + product.id} className="block mb-1">
+          <h2 className="font-bold text-[#243a50] text-base truncate hover:text-[#00416a] transition-colors">
             {product.name}
           </h2>
-          <p className="text-sm text-gray-600 mb-4 line-clamp-3">
-            {product.description}
-          </p>
-          <div className="flex justify-between items-center">
-            <PriceTag price={product.price} />
-            <FaStethoscope className="text-green-600" size={20} />
-          </div>
-        </div>
+        </Link>
+        <p className="text-sm text-[#688ca2] line-clamp-2 mb-3 flex-1">
+          {product.description}
+        </p>
+        <PriceTag price={product.price} />
       </div>
-    </Link>
+
+      {/* Actions */}
+      <div className="px-4 pb-4 flex flex-col gap-2">
+        <AddToCartButton
+          productId={product.id}
+          incrementProductQuantity={incrementProductQuantity}
+        />
+        <Link
+          href={"doctor/products/" + product.id}
+          className="block w-full text-center border border-[#00416a] text-[#00416a] hover:bg-[#00416a] hover:text-white text-sm font-semibold py-2 rounded-xl transition-all duration-200"
+        >
+          View Details
+        </Link>
+      </div>
+    </div>
   );
 }

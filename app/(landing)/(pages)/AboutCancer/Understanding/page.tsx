@@ -5,14 +5,14 @@ import Image from 'next/image'
 const Understanding = () => {
   return (
     <div
-      className="w-full h-full bg-gradient-to-r from-blue-100 via-blue-50 via-white via-blue-50 to-blue-100"
+      className="w-full h-full bg-gradient-to-r from-[#f0f4f8] to-white"
       style={{ backgroundImage: "url('/bg6.png')" }}
     >
       <div className="flex">
-        <div className="flex flex-col  p-3  shadow w-60 bg-blue-900 ">
+        <div className="flex flex-col  p-3  shadow w-60 bg-[#00416a] ">
           <div className="space-y-3  ">
             <div className="flex items-center">
-              <h2 className="text-lg font-bold text-blue-100 mt-14 transition-transform transform hover:scale-110 hover:shadow-xl ">
+              <h2 className="text-lg font-bold text-[#b1c0ca] mt-14 transition-transform transform hover:scale-110 hover:shadow-xl ">
                 <Link href="/AboutCancer/Understanding">
                   Understanding Cancer
                 </Link>{" "}
@@ -21,21 +21,21 @@ const Understanding = () => {
             <div className="flex-1">
               <ul className="pt-2 pb-4 space-y-1 text-sm">
                 <li className="rounded-sm flex items-center p-2 space-x-3 rounded-md">
-                  <span className="font-bold text-blue-100 hover:underline transition-transform transform hover:scale-110 hover:shadow-lg">
+                  <span className="font-bold text-[#b1c0ca] hover:underline transition-transform transform hover:scale-110 hover:shadow-lg">
                     <Link href="/AboutCancer/Understanding/What">
                       What is Cancer?
                     </Link>{" "}
                   </span>
                 </li>
                 <li className="rounded-sm flex items-center p-2 space-x-3 rounded-md">
-                  <span className="font-bold text-blue-100 hover:underline transition-transform transform hover:scale-110 hover:shadow-lg">
+                  <span className="font-bold text-[#b1c0ca] hover:underline transition-transform transform hover:scale-110 hover:shadow-lg">
                     <Link href="/AboutCancer/Understanding/Statistics">
                       Cancer Statistics
                     </Link>
                   </span>
                 </li>
                 <li className="rounded-sm flex items-center p-2 space-x-3 rounded-md">
-                  <span className="font-bold text-blue-100 hover:underline transition-transform transform hover:scale-110 hover:shadow-lg">
+                  <span className="font-bold text-[#b1c0ca] hover:underline transition-transform transform hover:scale-110 hover:shadow-lg">
                     <Link href="/AboutCancer/Understanding/Disparities">
                       Cancer Disparities
                     </Link>
@@ -48,7 +48,7 @@ const Understanding = () => {
 
         <div className="m-6">
           <div className="flex">
-            <h1 className="text-6xl font-bold py-20 pl-20 text-blue-800 transition-transform transform hover:scale-110">
+            <h1 className="text-6xl font-bold py-20 pl-20 text-[#243a50] transition-transform transform hover:scale-110">
               Understanding Cancer
             </h1>
             <Image

@@ -4,14 +4,8 @@ import toast, { Toaster } from "react-hot-toast";
 import { useEffect, useState } from "react";
 import { CiClock1 } from "react-icons/ci";
 import Image from "next/image";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-  CardFooter,
-} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Stethoscope } from "lucide-react";
 import { datageter, appointmentupdater } from "./action";
 import {
   Dialog,
@@ -33,7 +27,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
-interface Product {
+interface Doctor {
   id: string;
   imageUrl: string;
   name: string;
@@ -48,221 +42,279 @@ interface Product {
   updatedAt: Date;
 }
 
-const ProductCard = () => {
+const SkeletonCard = () => (
+  <div className="bg-white rounded-2xl p-6 border border-[#e4e5e6] animate-pulse">
+    <div className="flex items-center gap-4 mb-5">
+      <div className="w-16 h-16 rounded-full bg-[#e4e5e6] shrink-0" />
+      <div className="flex-1 space-y-2">
+        <div className="h-4 bg-[#e4e5e6] rounded w-3/4" />
+        <div className="h-3 bg-[#e4e5e6] rounded w-1/2" />
+      </div>
+    </div>
+    <div className="space-y-2 mb-5">
+      <div className="h-3 bg-[#e4e5e6] rounded w-full" />
+      <div className="h-3 bg-[#e4e5e6] rounded w-5/6" />
+      <div className="h-3 bg-[#e4e5e6] rounded w-2/3" />
+    </div>
+    <div className="h-10 bg-[#e4e5e6] rounded-xl" />
+  </div>
+);
+
+const DoctorList = () => {
   const { data: session } = useSession();
   const user = session?.user;
   const [date, setDate] = useState<Date | undefined>(undefined);
   const [time, setTime] = useState<string>("12:00");
-  const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [doctors, setDoctors] = useState<Doctor[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const fetchedProducts = await datageter();
-        setProducts(fetchedProducts as Product[]);
-      } catch (error) {
+        const data = await datageter();
+        setDoctors(data as Doctor[]);
+      } catch {
         toast.error("Error fetching doctors. Please try again.");
       } finally {
         setLoading(false);
       }
     };
-
     fetchData();
   }, []);
 
-  const bookAppointment = async (name: string, date: string, time: string) => {
+  const bookAppointment = async (doctorName: string) => {
     try {
-      const updatedProducts = await appointmentupdater(
-        name,
+      const result = await appointmentupdater(
+        doctorName,
         user?.name as string,
-        date,
+        date ? date.toISOString() : "",
         time
       );
-      if (updatedProducts.status === 200) {
-        toast.success(
-          updatedProducts.text || "Appointment booked successfully!"
-        );
-      } else if (updatedProducts.status === 400) {
-        toast.error(updatedProducts.text || "Failed to book appointment.");
+      if (result.status === 200) {
+        toast.success(result.text || "Appointment booked successfully!");
+      } else if (result.status === 400) {
+        toast.error(result.text || "Slot already taken. Try another time.");
       }
-    } catch (error) {
-      toast.error("An unexpected error occurred. Please try again.");
+    } catch {
+      toast.error("Something went wrong. Please try again.");
     }
   };
 
+  if (loading) {
+    return (
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {Array.from({ length: 6 }).map((_, i) => (
+          <SkeletonCard key={i} />
+        ))}
+      </div>
+    );
+  }
+
+  if (doctors.length === 0) {
+    return (
+      <div className="text-center py-20">
+        <div className="w-20 h-20 bg-[#e4e5e6] rounded-full flex items-center justify-center mx-auto mb-6">
+          <Stethoscope size={36} className="text-[#688ca2]" />
+        </div>
+        <h2 className="text-xl font-bold text-[#243a50] mb-2">
+          No doctors available
+        </h2>
+        <p className="text-[#688ca2] text-sm">
+          Please check back soon — we're onboarding new specialists.
+        </p>
+      </div>
+    );
+  }
+
   return (
     <>
-      <div className="flex justify-center pt-12 mb-12">
-        <h1 className="text-2xl font-bold">Doctors to Book</h1>
+      <div className="flex items-center justify-between mb-6">
+        <h2 className="font-bold text-[#243a50] text-lg">
+          Available Doctors
+          <span className="ml-2 text-[#688ca2] text-sm font-normal">
+            ({doctors.length} specialists)
+          </span>
+        </h2>
       </div>
-      {loading ? (
-        <div className="flex justify-center items-center py-12">
-          <p className="text-lg font-medium">Loading doctors...</p>
-        </div>
-      ) : (
-        <div className="flex justify-evenly gap-6 flex-wrap w-full px-6">
-          {products.length === 0 ? (
-            <div className="flex justify-center items-center py-12">
-              <p className="text-lg font-medium">
-                No doctors available at the moment.
-              </p>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {doctors.map((doctor) => (
+          <div
+            key={doctor.id}
+            className="bg-white rounded-2xl border border-[#e4e5e6] shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-[#00416a]/20 transition-all duration-300 overflow-hidden"
+          >
+            {/* Card header */}
+            <div className="bg-gradient-to-r from-[#00416a]/5 to-[#003255]/5 px-6 pt-6 pb-4 border-b border-[#e4e5e6]">
+              <div className="flex items-center gap-4">
+                <div className="relative">
+                  <Image
+                    src={doctor.imageUrl}
+                    alt={doctor.name}
+                    width={64}
+                    height={64}
+                    className="rounded-full object-cover w-16 h-16 border-2 border-[#e4e5e6]"
+                  />
+                  <span
+                    className={`absolute -bottom-1 -right-1 w-4 h-4 rounded-full border-2 border-white ${
+                      doctor.appointmentStatus ? "bg-orange-400" : "bg-green-500"
+                    }`}
+                  />
+                </div>
+                <div className="min-w-0">
+                  <h3 className="font-bold text-[#243a50] text-base truncate">
+                    {doctor.name}
+                  </h3>
+                  <span className="inline-block bg-[#00416a]/10 text-[#00416a] text-xs font-semibold px-2.5 py-0.5 rounded-full mt-1">
+                    {doctor.specialization}
+                  </span>
+                </div>
+              </div>
             </div>
-          ) : (
-            products.map((product) => (
-              <Card
-                key={product.id}
-                className={cn(
-                  "w-full sm:w-[44%] md:w-1/3 lg:w-1/4 shadow-lg p-6 mb-6 bg-white rounded-3xl",
-                  product.appointmentStatus
-                    ? "border-green-400 border-2"
-                    : "border-gray-200 border"
-                )}
-              >
-                <CardHeader>
-                  <div className="flex items-center space-x-4">
+
+            {/* Card body */}
+            <div className="px-6 py-4 space-y-2.5 text-sm">
+              <div className="flex items-center justify-between">
+                <span className="text-[#688ca2]">Experience</span>
+                <span className="font-semibold text-[#243a50]">
+                  {doctor.experience}
+                </span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-[#688ca2]">Consultation Fee</span>
+                <span className="font-bold text-[#00416a]">
+                  ₹{doctor.feesPerConsultation}
+                </span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-[#688ca2]">Contact</span>
+                <span className="font-medium text-[#243a50]">
+                  {doctor.phoneNum}
+                </span>
+              </div>
+              <div className="flex items-center justify-between pt-1">
+                <span className="text-[#688ca2]">Status</span>
+                <span
+                  className={`text-xs font-bold px-2.5 py-1 rounded-full ${
+                    doctor.appointmentStatus
+                      ? "bg-orange-100 text-orange-600"
+                      : "bg-green-100 text-green-600"
+                  }`}
+                >
+                  {doctor.appointmentStatus ? "Booked" : "Available"}
+                </span>
+              </div>
+            </div>
+
+            {/* Card footer */}
+            <div className="px-6 pb-6">
+              <Dialog>
+                <DialogTrigger asChild>
+                  <button className="w-full bg-[#00416a] hover:bg-[#003255] text-white font-bold py-2.5 px-4 rounded-xl transition-colors duration-200 text-sm hover:shadow-md">
+                    Book Appointment
+                  </button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-md rounded-2xl">
+                  <DialogHeader className="text-left">
+                    <DialogTitle className="text-[#243a50] font-bold text-xl">
+                      Book with {doctor.name}
+                    </DialogTitle>
+                    <DialogDescription className="text-[#688ca2]">
+                      Select your preferred date and time for the consultation.
+                    </DialogDescription>
+                  </DialogHeader>
+
+                  {/* Doctor summary inside dialog */}
+                  <div className="flex items-center gap-3 bg-[#f0f4f8] rounded-xl p-3 mb-2">
                     <Image
-                      src={product.imageUrl}
-                      alt={product.name}
-                      width={60}
-                      height={60}
-                      className="rounded-full"
+                      src={doctor.imageUrl}
+                      alt={doctor.name}
+                      width={40}
+                      height={40}
+                      className="rounded-full object-cover w-10 h-10"
                     />
                     <div>
-                      <CardTitle className="text-xl font-semibold">
-                        {product.name}
-                      </CardTitle>
-                      <p className="text-sm text-gray-500">
-                        {product.specialization}
+                      <p className="font-semibold text-[#243a50] text-sm">
+                        {doctor.name}
+                      </p>
+                      <p className="text-[#688ca2] text-xs">
+                        {doctor.specialization} · ₹{doctor.feesPerConsultation}
                       </p>
                     </div>
                   </div>
-                </CardHeader>
-                <CardContent>
-                  <p>Experience: {product.experience}</p>
-                  <p>Fees per Consultation: ${product.feesPerConsultation}</p>
-                  <p>Contact Number: {product.phoneNum}</p>
-                </CardContent>
-                <CardContent>
-                  <p className="font-bold mt-4">Additional Details:</p>
-                  <p
-                    className={`mt-2 ${
-                      product.appointmentStatus
-                        ? "text-green-600"
-                        : "text-red-600"
-                    }`}
-                  >
-                    Appointment Status:{" "}
-                    {product.appointmentStatus ? "Booked" : "Available"}
-                  </p>
-                </CardContent>
-                <CardFooter className="flex justify-center">
-                  <Dialog>
-                    <DialogTrigger asChild>
-                      <Button
-                        className="bg-blue-500 text-white hover:bg-blue-600"
-                        variant="outline"
-                      >
-                        Book Appointment
-                      </Button>
-                    </DialogTrigger>
-                    <DialogContent className="sm:max-w-[425px]">
-                      <DialogHeader>
-                        <DialogTitle className="flex justify-center mb-4">
-                          Book the Appointment
-                        </DialogTitle>
-                        <DialogDescription className="flex justify-center">
-                          Select the date and time for your appointment
-                        </DialogDescription>
-                      </DialogHeader>
-                      <div className="grid gap-4 py-2">
-                        <div className="flex flex-col items-center">
-                          <Popover>
-                            <PopoverTrigger asChild>
-                              <Button
-                                variant={"outline"}
-                                className={cn(
-                                  "w-full justify-start text-left font-normal",
-                                  !date && "text-muted-foreground"
-                                )}
-                              >
-                                <CalendarIcon className="mr-2 h-4 w-4" />
-                                {date ? (
-                                  format(date, "P")
-                                ) : (
-                                  <span>Pick a date</span>
-                                )}
-                              </Button>
-                            </PopoverTrigger>
-                            <PopoverContent className="w-auto p-0">
-                              <Calendar
-                                mode="single"
-                                selected={date}
-                                onSelect={(value: Date | undefined) =>
-                                  setDate(value)
-                                }
-                                initialFocus
-                              />
-                            </PopoverContent>
-                          </Popover>
-                        </div>
-                        <div className="flex flex-col items-center">
-                          <Popover>
-                            <PopoverTrigger asChild>
-                              <Button
-                                variant={"outline"}
-                                className={cn(
-                                  "w-full justify-start text-left font-normal",
-                                  !time && "text-muted-foreground"
-                                )}
-                              >
-                                <CiClock1 className="mr-2 h-4 w-4" />
-                                {time ? time : <span>Pick a time</span>}
-                              </Button>
-                            </PopoverTrigger>
-                            <PopoverContent
-                              className="w-auto p-0"
-                              align="start"
-                              asChild
-                            >
-                              <input
-                                type="time"
-                                className="form-input w-full"
-                                value={time}
-                                onChange={(e) => setTime(e.target.value)}
-                              />
-                            </PopoverContent>
-                          </Popover>
-                        </div>
-                      </div>
-                      <DialogFooter>
-                        <DialogClose asChild>
+
+                  <div className="space-y-3">
+                    {/* Date picker */}
+                    <div>
+                      <label className="text-xs font-semibold text-[#688ca2] uppercase tracking-wider mb-1.5 block">
+                        Date
+                      </label>
+                      <Popover>
+                        <PopoverTrigger asChild>
                           <Button
-                            onClick={() =>
-                              bookAppointment(
-                                product.name,
-                                date ? date.toISOString() : "",
-                                time
-                              )
-                            }
-                            className="bg-green-500 text-white hover:bg-green-600"
+                            variant="outline"
+                            className={cn(
+                              "w-full justify-start text-left font-normal border-[#e4e5e6] hover:border-[#00416a] rounded-xl",
+                              !date && "text-muted-foreground"
+                            )}
                           >
-                            Save Changes
+                            <CalendarIcon className="mr-2 h-4 w-4 text-[#688ca2]" />
+                            {date ? format(date, "PPP") : "Pick a date"}
                           </Button>
-                        </DialogClose>
-                      </DialogFooter>
-                    </DialogContent>
-                  </Dialog>
-                </CardFooter>
-              </Card>
-            ))
-          )}
-        </div>
-      )}
-      <Toaster />
+                        </PopoverTrigger>
+                        <PopoverContent className="w-auto p-0 rounded-xl border-[#e4e5e6]">
+                          <Calendar
+                            mode="single"
+                            selected={date}
+                            onSelect={(value: Date | undefined) => setDate(value)}
+                            initialFocus
+                            disabled={(d) => d < new Date()}
+                          />
+                        </PopoverContent>
+                      </Popover>
+                    </div>
+
+                    {/* Time picker */}
+                    <div>
+                      <label className="text-xs font-semibold text-[#688ca2] uppercase tracking-wider mb-1.5 block">
+                        Time
+                      </label>
+                      <div className="flex items-center gap-2 border border-[#e4e5e6] hover:border-[#00416a] rounded-xl px-3 py-2 transition-colors">
+                        <CiClock1 className="text-[#688ca2]" size={18} />
+                        <input
+                          type="time"
+                          className="flex-1 text-sm text-[#243a50] bg-transparent focus:outline-none"
+                          value={time}
+                          onChange={(e) => setTime(e.target.value)}
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <DialogFooter className="gap-2 mt-2">
+                    <DialogClose asChild>
+                      <Button variant="outline" className="rounded-xl border-[#e4e5e6]">
+                        Cancel
+                      </Button>
+                    </DialogClose>
+                    <DialogClose asChild>
+                      <button
+                        onClick={() => bookAppointment(doctor.name)}
+                        className="bg-[#ff6f61] hover:bg-[#e85d50] text-white font-bold py-2 px-6 rounded-xl transition-colors duration-200 text-sm"
+                      >
+                        Confirm Booking
+                      </button>
+                    </DialogClose>
+                  </DialogFooter>
+                </DialogContent>
+              </Dialog>
+            </div>
+          </div>
+        ))}
+      </div>
+      <Toaster position="bottom-right" />
     </>
   );
 };
 
-export default ProductCard;
+export default DoctorList;

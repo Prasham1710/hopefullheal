@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(xargs sed -i \"s/from-blue-100 via-blue-50 via-white via-blue-50 to-blue-100/from-[#f0f4f8] to-white/g; s/from-blue-100/from-[#f0f4f8]/g; s/via-blue-50 via-white via-blue-50//g; s/to-blue-100/to-white/g; s/bg-blue-REMOVED-//g; s/hover:bg-\\\\[#003255\\\\] hover:bg-blue-REMOVED-//g\")"
+    ]
+  }
+}

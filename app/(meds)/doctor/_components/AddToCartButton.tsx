@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { BsCartPlus } from "react-icons/bs";
+import { BsCartPlus, BsCheck2 } from "react-icons/bs";
 
 interface AddToCartButtonProps {
   productId: string;
@@ -15,32 +15,46 @@ export default function AddToCartButton({
   const [isPending, startTransition] = useTransition();
   const [success, setSuccess] = useState(false);
 
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setSuccess(false);
+    startTransition(async () => {
+      await incrementProductQuantity(productId);
+      setSuccess(true);
+      setTimeout(() => setSuccess(false), 2000);
+    });
+  };
+
   return (
-    <div className="flex items-center gap-4 mt-4">
-      <button
-        className={`flex items-center bg-blue-600 text-white px-5 py-2 rounded-md shadow-lg hover:bg-blue-700 transition-transform duration-300 transform-gpu ${
-          isPending ? "cursor-not-allowed opacity-70" : "hover:scale-105"
-        }`}
-        disabled={isPending}
-        onClick={() => {
-          setSuccess(false);
-          startTransition(async () => {
-            await incrementProductQuantity(productId);
-            setSuccess(true);
-          });
-        }}
-      >
-        <span className="mr-2">Add to Cart</span>
-        <BsCartPlus size={20} />
-      </button>
-
-      {isPending && (
-        <span className="loading loading-spinner loading-md text-blue-500" />
+    <button
+      onClick={handleClick}
+      disabled={isPending}
+      className={`flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-sm font-bold transition-all duration-200 disabled:cursor-not-allowed
+        ${
+          success
+            ? "bg-green-500 text-white"
+            : "bg-[#ff6f61] hover:bg-[#e85d50] text-white hover:shadow-md hover:shadow-[#ff6f61]/25"
+        }
+        ${isPending ? "opacity-75" : ""}
+      `}
+    >
+      {isPending ? (
+        <>
+          <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+          Adding…
+        </>
+      ) : success ? (
+        <>
+          <BsCheck2 size={16} />
+          Added!
+        </>
+      ) : (
+        <>
+          <BsCartPlus size={16} />
+          Add to Cart
+        </>
       )}
-
-      {!isPending && success && (
-        <span className="text-blue-600 font-semibold">Added to Cart!</span>
-      )}
-    </div>
+    </button>
   );
 }

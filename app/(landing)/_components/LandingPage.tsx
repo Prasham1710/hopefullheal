@@ -1,25 +1,20 @@
-
-"use client";
-import React, { useState } from "react";
+import dynamic from "next/dynamic";
 import Hero from "./Hero";
-import Features from "./Features";
-import About from "./About";
-import Abt from "./Abt";
-import Services from "./Services";
 
-const LandingPage = () => {
+// Below-fold sections loaded lazily — not needed for initial paint
+const Features = dynamic(() => import("./Features"));
+const About = dynamic(() => import("./About"));
+const Services = dynamic(() => import("./Services"));
+const Abt = dynamic(() => import("./Abt"));
 
-
+export default function LandingPage() {
   return (
-    <div className="w-full h-full ">
-    <Hero/>
-    <Features/>
-    <About/>
-    <Services />
-    <Abt />
-  </div>
-  
-  )
+    <div className="w-full">
+      <Hero />
+      <Features />
+      <About />
+      <Services />
+      <Abt />
+    </div>
+  );
 }
-
-export default LandingPage

@@ -11,7 +11,7 @@ import chat from '/public/chat.png'
 const Features = () => {
   return (
     <div className='bg-[#e4e5e6] '>
-      <div> 
+      <div>
   <p className='font-bold text-6xl text-center text-[#243a50] pt-6' >Services</p>
 
   <div className="col-span-4">
@@ -96,7 +96,7 @@ const Features = () => {
         <div className='border-4 border-dashed border-[#243a50] w-[33rem] h-[33rem] absolute left-1/2 top-1/2  -translate-x-1/2 -translate-y-1/2  hidden lg:block rounded-full  '>
         <Image src={earth} alt='hero' width={800} height={800} className='absolute left-1/2 top-1/2  -translate-x-1/2 -translate-y-1/2  hidden lg:block ' />
         </div>
-        
+
     </div>
 </div>
 
